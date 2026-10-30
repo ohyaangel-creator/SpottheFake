@@ -38,7 +38,13 @@ function toggleMute(){muted=!muted;if(muted){try{speechSynthesis.cancel();}catch
 function soundTest(kind){if(kind==="click")playClick();else if(kind==="success")playCorrect();else if(kind==="warning")playWarning();else if(kind==="badge")playBadge();}
 function soundStatusText(){return muted?"音效：關 🔇":"音效：開 🔊";}
 function playSoundDemo(){unlockAudio();if(muted){muted=false;document.querySelectorAll(".mute-btn").forEach(b=>{b.textContent="🔊 音效開";});}playBadge();var el=document.getElementById("soundMsg");if(el){el.innerHTML="♪♪ 正在播放聲音…如果聽不到，請檢查手機音量和靜音模式，並用 Safari 或 Chrome 開啟（有些 App 內預覽會擋住聲音）。";setTimeout(function(){var e2=document.getElementById("soundMsg");if(e2)e2.innerHTML="剛剛應該聽到 4 個往上跑的音。如果還是聽不到，請把音量調大、關掉靜音模式，再點一次。";},2000);}}
-function readPage(){try{speechSynthesis.cancel();const el=document.getElementById("app");if(!el)return;const txt=el.innerText.replace(/\s+/g," ").slice(0,1200);const u=new SpeechSynthesisUtterance(txt);u.lang="zh-TW";u.rate=0.95;speechSynthesis.speak(u);}catch(e){}}
+function readPage(){try{speechSynthesis.cancel();let parts=[];
+const post=document.querySelector(".postcard");if(post)parts.push(post.innerText);
+document.querySelectorAll(".comment").forEach(e=>parts.push(e.innerText));
+const checker=document.querySelector(".checker");if(checker)parts.push(checker.innerText);
+document.querySelectorAll("button.route-push,button.route-hidden,button.route-safe").forEach(e=>parts.push("選項："+e.innerText));
+if(parts.length===0){const h=document.querySelector("main h2");if(h)parts.push(h.innerText);document.querySelectorAll("main .card p").forEach(e=>{if(!e.closest(".topbar"))parts.push(e.innerText);});}
+const txt=parts.join("。").replace(/\s+/g," ").slice(0,1200);if(!txt)return;const u=new SpeechSynthesisUtterance(txt);u.lang="zh-TW";u.rate=0.95;speechSynthesis.speak(u);}catch(e){}}
 function stopRead(){try{speechSynthesis.cancel();}catch(e){}}
 function goHome(){saveGame();stopRead();welcome();}
 function toggleParentMode(){parentMode=!parentMode;playClick();welcome();}
