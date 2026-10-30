@@ -2729,6 +2729,7 @@
       dom.header.classList.add('hidden');
       dom.badgeModal.classList.add('hidden');
       dom.screenResult.classList.remove('hidden');
+      state.lastVictory = isVictory;
 
       dom.finalFans.textContent = Number(state.followers).toLocaleString();
       dom.finalCred.textContent = `${Math.max(0, state.credibility)}%`;
@@ -2741,6 +2742,7 @@
         dom.resultIconWrapper.innerHTML = '<i class="fa-solid fa-shield-cat"></i>';
         dom.resultTitle.textContent = state.followers >= 100000 ? "哇！你衝到十萬粉絲了！" : "恭喜過關！你已經會防假消息了！";
         dom.resultSubtitle.textContent = `你玩過了 6 大騙人套路，以後假消息很難騙到你了！你有 ${state.followers.toLocaleString()} 名追蹤者！`;
+        dom.btnRestart.innerHTML = '<i class="fa-solid fa-rotate-right"></i> 換個身分再玩一次';
       } else {
         sound.playWarning();
         dom.resultTag.className = "bg-rose-500/20 text-rose-300 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider";
@@ -2748,7 +2750,9 @@
         dom.resultIconWrapper.className = "w-14 h-14 rounded-2xl bg-rose-500/20 text-rose-400 flex items-center justify-center mx-auto text-2xl";
         dom.resultIconWrapper.innerHTML = '<i class="fa-solid fa-ban"></i>';
         dom.resultTitle.textContent = "太過火了！帳號被關掉了！";
-        dom.resultSubtitle.textContent = "這也是重要的一課：一直編假消息、欺負人，最後會被大家封掉。";
+        dom.resultSubtitle.textContent = "別灰心，再加油！記住：看到驚人消息先停一下、查一下，不要亂轉傳。按下面「再加油，再玩一次」，這次一定可以過關！";
+        dom.certText.textContent = "這次還沒過關，先不要領證書喔！再加油，玩到過關再來蓋章！";
+        dom.btnRestart.innerHTML = '<i class="fa-solid fa-rotate-right"></i> 再加油，再玩一次';
       }
 
       // 渲染 6 大徽章成就清單
@@ -2782,6 +2786,11 @@
     // 蓋章認證
     dom.btnStamp.onclick = () => {
       sound.playClick();
+      if (state.lastVictory === false) {
+        dom.certText.textContent = "這次還沒過關，先不要領證書喔！再加油，玩到過關再來蓋章！";
+        showToast("還沒過關，再加油！過關後再來蓋章！", false);
+        return;
+      }
       const val = dom.userNameInput.value.trim();
       if (val) { state.playerName = val; }
       dom.certText.innerHTML = `
@@ -2795,11 +2804,26 @@
     // 複製戰績卡
     dom.btnShare.onclick = () => {
       sound.playClick();
-      const textToCopy = `🎮 我在台灣兒童版《Bad News 小小網軍修煉所》破關了！\n` +
-                         `📈 最終影響力粉絲：${state.followers.toLocaleString()} 人（突破十萬大關！）\n` +
-                         `🛡️ 帳號剩餘可信度：${Math.max(0, state.credibility)}%\n` +
-                         `🏅 我玩完了 6 關，學會看穿假消息！\n` +
-                         `換你來玩玩看，你能到 10 萬粉絲嗎？`;
+      let textToCopy;
+      if (state.lastVictory === false) {
+        textToCopy = `🎮 我在台灣兒童版《Bad News 小小網軍修煉所》練習中，這次還沒過關！\n` +
+                       `📈 目前粉絲：${state.followers.toLocaleString()} 人\n` +
+                       `🛡️ 帳號可信度歸零，帳號被關掉了。\n` +
+                       `💪 再加油！記住：看到驚人消息先停一下、查一下，不要亂轉傳！\n` +
+                       `換你來玩玩看，你能過關嗎？`;
+      } else if (state.followers >= 100000) {
+        textToCopy = `🎮 我在台灣兒童版《Bad News 小小網軍修煉所》破關了！\n` +
+                       `📈 最終影響力粉絲：${state.followers.toLocaleString()} 人（突破十萬大關！）\n` +
+                       `🛡️ 帳號剩餘可信度：${Math.max(0, state.credibility)}%\n` +
+                       `🏅 我玩完了 6 關，學會看穿假消息！\n` +
+                       `換你來玩玩看，你能到 10 萬粉絲嗎？`;
+      } else {
+        textToCopy = `🎮 我在台灣兒童版《Bad News 小小網軍修煉所》過關了！\n` +
+                       `📈 最終影響力粉絲：${state.followers.toLocaleString()} 人\n` +
+                       `🛡️ 帳號剩餘可信度：${Math.max(0, state.credibility)}%\n` +
+                       `🏅 我玩完了 6 關，學會看穿假消息！\n` +
+                       `換你來玩玩看，你能到 10 萬粉絲嗎？`;
+      }
 
       const tempInput = document.createElement('textarea');
       tempInput.value = textToCopy;
