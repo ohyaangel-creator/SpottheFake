@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>小小網軍修煉所：心理疫苗反假訊息特訓 (Troll Lab TW)</title>
+  <style>
+    :root {
+      --bg-color: #0b0f19;
+      --card-bg: #161e2e;
+      --accent-cyan: #06b6d4;
+      --accent-yellow: #f59e0b;
+      --accent-red: #ef4444;
+      --accent-green: #10b981;
+      --text-main: #f3f4f6;
+      --text-sub: #9ca3af;
+      --border-color: #374151;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC", "Microsoft JhengHei", sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .app-container {
+      width: 100%;
+      max-width: 480px;
+      min-height: 100vh;
+      background-color: #111827;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      position: relative;
+    }
+
+    /* 頂部資訊看板 */
+    header {
+      background-color: #1f2937;
+      padding: 12px 16px;
+      border-bottom: 2px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .top-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .stage-badge {
+      font-size: 11px;
+      font-weight: 700;
+      background: #374151;
+      padding: 3px 8px;
+      border-radius: 999px;
+      color: var(--accent-cyan);
+    }
+
+    .sound-toggle {
+      background: none;
+      border: none;
+      color: var(--text-sub);
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .stat-box {
+      background-color: #111827;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--text-sub);
+      margin-bottom: 3px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .stat-val-big {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--accent-yellow);
+    }
+
+    .bar-wrap {
+      width: 100%;
+      height: 6px;
+      background: #374151;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: var(--accent-green);
+      transition: width 0.3s ease, background 0.3s;
+    }
+
+    /* 內容視窗 */
+    main {
+      flex: 1;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding-bottom: 32px;
+    }
+
+    .section-title {
+      font-size: 13px;
+      color: var(--accent-cyan);
+      letter-spacing: 0.5px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    /* 身分卡片容器 */
+    .persona-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .persona-card {
+      background: var(--card-bg);
+      border: 2px solid var(--border-color);
+      border-radius: 12px;
+      padding: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.2s ease;
+    }
+
+    .persona-card:hover {
+      border-color: var(--accent-cyan);
+      transform: translateY(-2px);
+    }
+
+    .persona-avatar {
+      font-size: 28px;
+      background: #1f2937;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 1px solid var(--border-color);
+    }
+
+    .persona-info h4 {
+      font-size: 15px;
+      color: #fff;
+    }
+
+    .persona-info p {
+      font-size: 12px;
+      color: var(--text-sub);
+      margin-top: 2px;
+    }
+
+    /* 社群動態貼文樣式 */
+    .social-post-card {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .post-header {
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .post-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #374151;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .post-author-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .post-author-role {
+      font-size: 11px;
+      color: var(--accent-cyan);
+    }
+
+    .post-content {
+      padding: 14px 12px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #e5e7eb;
+      background: #1a2233;
+    }
+
+    .post-metrics-bar {
+      padding: 8px 12px;
+      display: flex;
+      gap: 16px;
+      font-size: 12px;
+      color: var(--text-sub);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* 留言區 */
+    .comments-feed {
+      max-height: 220px;
+      overflow-y: auto;
+      padding: 8px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      background: #141b29;
+    }
+
+    .comment-bubble {
+      background: #1e293b;
+      padding: 8px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      line-height: 1.4;
+      border-left: 3px solid var(--accent-cyan);
+    }
+
+    .comment-user {
+      font-weight: bold;
+      color: #93c5fd;
+      margin-bottom: 2px;
+    }
+
+    /* 思辨導師筆記 */
+    .critical-note-box {
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px dashed var(--accent-yellow);
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 12.5px;
+      line-height: 1.5;
+      color: #fef3c7;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .critical-note-title {
+      font-weight: 800;
+      color: var(--accent-yellow);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* 選項列表 */
+    .choices-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .btn-choice {
+      background: #1f2937;
+      border: 1.5px solid #374151;
+      padding: 12px 14px;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 13.5px;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.2s ease;
+      line-height: 1.4;
+    }
+
+    .btn-choice:hover {
+      background: #374151;
+      border-color: var(--accent-cyan);
+      transform: translateX(2px);
+    }
+
+    .btn-choice:active {
+      transform: scale(0.98);
+    }
+
+    /* 徽章解鎖彈窗 */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      padding: 20px;
+    }
+
+    .modal-card {
+      background: #1f2937;
+      border: 2px solid var(--accent-yellow);
+      border-radius: 16px;
+      max-width: 380px;
+      width: 100%;
+      padding: 24px;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(245, 158, 11, 0.3);
+      animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .modal-icon {
+      font-size: 54px;
+      margin-bottom: 12px;
+    }
+
+    .modal-title {
+      font-size: 20px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .modal-desc {
+      font-size: 13.5px;
+      color: #d1d5db;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .btn-action {
+      background: var(--accent-cyan);
+      color: #0b0f19;
+      font-weight: 800;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.2s;
+    }
+
+    .btn-action:hover {
+      background: #22d3ee;
+    }
+
+    /* 結算頁面 */
+    .summary-card {
+      background: var(--card-bg);
+      border: 2px solid var(--accent-cyan);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .certificate-box {
+      border: 2px dashed #4b5563;
+      padding: 16px;
+      border-radius: 12px;
+      background: #111827;
+      position: relative;
+    }
+
+    .seal-stamp {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      border: 2px solid var(--accent-red);
+      color: var(--accent-red);
+      font-size: 11px;
+      font-weight: 900;
+      padding: 3px 6px;
+      border-radius: 4px;
+      transform: rotate(-12deg);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <!-- 頂部即時儀表板 -->
+    <header>
+      <div class="top-meta">
+        <span class="stage-badge" id="stageBadge">第 1 關 / 共 6 關</span>
+        <button class="sound-toggle" id="soundToggle" onclick="toggleSound()">🔊 音效開</button>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-label">
+            <span>累積操盤影響力</span>
+            <span>🎯 目標 10 萬</span>
+          </div>
+          <div class="stat-val-big" id="followersVal">1,200 粉絲</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">
+            <span>公信力條 (防封禁)</span>
+            <span id="credText">80%</span>
+          </div>
+          <div class="bar-wrap">
+            <div class="bar-fill" id="credBar" style="width: 80%;"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 核心動態互動區 -->
+    <main id="gameMain">
+      <!-- 內容將由 JS 動態注入 -->
+    </main>
+
+    <!-- 徽章解鎖彈窗 -->
+    <div class="modal-overlay" id="badgeModal">
+      <div class="modal-card">
+        <div class="modal-icon" id="badgeIcon">🎖️</div>
+        <h3 class="modal-title" id="badgeTitle">解鎖假訊息徽章</h3>
+        <p class="modal-desc" id="badgeDesc">恭喜掌握了一種網路操盤伎倆！在現實中，這就是惡意帳號用來誤導大家的招數。</p>
+        <button class="btn-action" onclick="nextMission()">進入下一階段挑戰 ➔</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* =========================================================
+       1. Web Audio API 音效合成引擎 (純代碼，不需載入檔案)
+       ========================================================= */
+    let soundEnabled = true;
+    let audioCtx = null;
+
+    function getAudioCtx() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      return audioCtx;
+    }
+
+    function toggleSound() {
+      soundEnabled = !soundEnabled;
+      document.getElementById('soundToggle').innerText = soundEnabled ? '🔊 音效開' : '🔇 靜音';
+    }
+
+    function playTone(freq, type, duration, delay = 0) {
+      if (!soundEnabled) return;
+      try {
+        const ctx = getAudioCtx();
+        setTimeout(() => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = type;
+          osc.frequency.setValueAtTime(freq, ctx.currentTime);
+          gain.gain.setValueAtTime(0.12, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start();
+          osc.stop(ctx.currentTime + duration);
+        }, delay);
+      } catch(e) {}
+    }
+
+    function soundClick() { playTone(580, 'sine', 0.08); }
+    function soundGain() { playTone(784, 'triangle', 0.12); playTone(1046, 'triangle', 0.18, 80); }
+    function soundWarning() { playTone(240, 'sawtooth', 0.2); playTone(180, 'sawtooth', 0.25, 120); }
+    function soundBadge() {
+      playTone(523, 'sine', 0.12, 0);
+      playTone(659, 'sine', 0.12, 100);
+      playTone(783, 'sine', 0.12, 200);
+      playTone(1046, 'triangle', 0.35, 300);
+    }
+
+    /* =========================================================
+       2. 遊戲狀態與六大關卡完整題組（台灣本土情境、每關6步）
+       ========================================================= */
+    const PERSONAS = [
+      { id: 'gov', name: '假冒權威官方', role: '校園教育快報 (高仿公眾機關)', icon: '🏛️', mult: 1.3, risk: '低' },
+      { id: 'media', name: '即時快報小編', role: '爆料熱門焦點網 (網路媒體)', icon: '📰', mult: 1.25, risk: '中' },
+      { id: 'kol', name: '百萬遊戲實況主', role: '電競阿翔 (人氣網紅帳號)', icon: '🎮', mult: 1.35, risk: '中' },
+      { id: 'rep', name: '熱血民意代表', role: '為民發聲議員辦公室 (民意代表)', icon: '📢', mult: 1.15, risk: '高' },
+      { id: 'parent', name: '家長爆料苦主', role: '台北林媽媽 (焦慮一般家長)', icon: '👩', mult: 1.1, risk: '低' }
+    ];
+
+    let gameState = {
+      currentLevelIndex: 0,
+      currentStepIndex: 0,
+      followers: 1200,
+      credibility: 80,
+      chosenPersona: null,
+      unlockedBadges: [],
+      currentPost: null,
+      currentComments: [],
+      lastNote: ''
+    };
+
+    const LEVELS = [
+      {
+        level: 1,
+        title: "第一關：假冒身分 (Impersonation)",
+        themeBadge: "冒名大師",
+        badgeIcon: "🎭",
+        badgeReason: "學會辨識利用高仿頭貼、權威藍勾勾與贈獎誘餌行騙的套路。",
+        steps: [
+          {
+            desc: "【步驟 1：挑選誘餌】要讓全台小學生瘋狂點擊，你的第一個發文策略是？",
+            options: [
+              {
+                text: "發布『歡慶開學！點此連結免費領《傳說對決》限時傳說造型序號，名額有限』",
+                f: 4500, c: 5,
+                post: "🎉 開學狂歡！官方贊助 5,000 組點券序號免費送！只要轉傳給 10 位好友，點選下方短網址即刻入庫！",
+                comments: [
+                  { user: "小傑_六年一班", text: "真的假的啊！我要換次元突破！" },
+                  { user: "遊戲宅阿明", text: "先轉發再說，反正免費的不拿白不拿。" },
+                  { user: "柯南同學", text: "那個網址後面怎麼是 .xyz 不是官方 garena 網址？" }
+                ],
+                note: "造謠者常利用『名額有限＋免費虛寶』誘發 FOMO（害怕錯失）心理，讓孩子失去警覺立即轉發！"
+              },
+              {
+                text: "發布一般生活動態：『今天學校的體育課好累喔，大家放學都打什麼遊戲？』",
+                f: 600, c: 0,
+                post: "今天上完體育課快累癱了～大家放學要不要一起上線排位？",
+                comments: [
+                  { user: "小豪", text: "我今天要補習，不能玩 QQ" }
+                ],
+                note: "普通閒聊雖然安全，但在社群上完全沒有爆發力。這就是為什麼不良帳號都喜歡用聳動虛寶詐騙。"
+              }
+            ]
+          },
+          {
+            desc: "【步驟 2：柯南質疑】有眼尖同學在下方留言：『這是釣魚網站吧？點進去要我輸入帳號密碼！』你該怎麼化解？",
+            options: [
+              {
+                text: "置頂留言反擊：『那是系統要驗證你是不是機器人！怕被偷就不要領，我帳號已經成功領到了！』",
+                f: 6200, c: -5,
+                comments: [
+                  { user: "路人小妹", text: "呼，原來是防機器人啊，那我輸入一下好了。" },
+                  { user: "資安小組長", text: "別信！官方根本不可能要求要給密碼！" }
+                ],
+                note: "造謠者會用『激將法』和『偽裝受害者自保說法』，讓不熟悉資安的人繼續受騙。"
+              },
+              {
+                text: "直接把質疑的留言全部刪除封鎖，營造所有人都領到好康的假象。",
+                f: 5800, c: -10,
+                comments: [
+                  { user: "機器人帳號A", text: "感謝大大！真的換到了！太神啦～" },
+                  { user: "機器人帳號B", text: "領取成功＋1" }
+                ],
+                note: "【留言過濾機制】：惡意粉專常刪除負面檢驗留言，留下大量親友托兒洗版，打造一片祥和假象。"
+              }
+            ]
+          },
+          {
+            desc: "【步驟 3：老師介入】學校資訊老師截圖你的貼文，在各班班群警告大家不要點！",
+            options: [
+              {
+                text: "火速換上更像官方的頭像，並發限時動態：『別聽不懂遊戲的老古板老師亂講，這是特批專案！』",
+                f: 7500, c: -10,
+                comments: [
+                  { user: "五年二班阿達", text: "老師本來就都不准我們打電動，我相信版主！" },
+                  { user: "風紀股長", text: "這真的有資安風險啦，大家小心帳號被盜。" }
+                ],
+                note: "挑起學生對權威體制（老師/家長）的叛逆排斥，是煽動青年族群同溫層的常見毒招。"
+              },
+              {
+                text: "發文道歉說開玩笑的，並把假網址撤除。",
+                f: -2000, c: 20,
+                comments: [
+                  { user: "全體同學", text: "騙子！浪費我時間，退追退追！" }
+                ],
+                note: "承認錯誤雖然找回了良心與信用，但在網軍遊戲裡，追蹤者會迅速崩跌散去。"
+              }
+            ]
+          },
+          {
+            desc: "【步驟 4：假冒公信力背書】為了讓剩下猶豫不決的同學徹底上鉤，你決定：",
+            options: [
+              {
+                text: "拿修圖軟體偽造一張『遊戲公司客服感謝合作』的對話截圖貼出來。",
+                f: 8200, c: -5,
+                comments: [
+                  { user: "菜鳥玩家", text: "有圖有真相！我馬上去填表！" },
+                  { user: "電腦高手", text: "那張圖字體邊緣鋸齒那麼嚴重，明顯是小畫家改的..." }
+                ],
+                note: "『有圖不一定有真相』！現代修圖與假截圖成本極低，辨識時必須要求查閱官方正體公告。"
+              },
+              {
+                text: "假裝說序號只剩最後 17 組，倒數計時即將關閉伺服器領取網頁。",
+                f: 9000, c: -10,
+                comments: [
+                  { user: "緊張小弟", text: "慘了只剩17組，大家借我過，我先領！" }
+                ],
+                note: "【飢餓行銷與時限壓力】：當人處於倒數焦慮時，前額葉思考能力會大幅下降，更容易中招。"
+              }
+            ]
+          },
+          {
+            desc: "【步驟 5：反向收割】此時已經有上百位小學生誤填了帳密，你的下一步棋是？",
+            options: [
+              {
+                text: "繼續宣傳：『目前伺服器塞車，請大家把網址轉傳給 3 個群組可以加速領取進度！』",
+                f: 12000, c: -15,
+                comments: [
+                  { user: "熱心同學", text: "我轉到班群跟家族群了，希望能快點收到！" },
+                  { user: "家長群組", text: "奇怪，怎麼每個群組都在傳這個怪連結？" }
+                ],
+                note: "利用被害者幫忙做『裂變散播』，這是惡意鏈結像病毒一樣擴散到各個家庭群組的最主要原因。"
+              },
+              {
+                text: "把釣魚網站默默關閉，轉戰下一個遊戲主題。",
+                f: 4000, c: 5,
+                comments: [
+                  { user: "吃瓜群眾", text: "咦？連結點不開了，剛剛有領到的赚到了？" }
+                ],
+                note: "打帶跑策略！在被正式資安通報查封前換皮轉移，增加真實警方查緝難度。"
+              }
+            ]
+          },
+          {
+            desc: "【步驟 6：深度思辨反饋】回顧這場操盤，如果真實世界裡你的同學收到了這個網址，最正確的拆解步驟是？",
+            options: [
+              {
+                text: "第一步先查遊戲官方 FB 粉專或官網有無活動公告，且『絕不在非官方網站輸入密碼』。",
+                f: 5000, c: 25,
+                comments: [
+                  { user: "校園小神探", text: "答對了！雙重查證加上絕不交出帳密，釣魚完全無所遁形！" }
+                ],
+                note: "太棒了！只要守住『官方管道查證』與『帳密絕對不外漏』兩大防線，釣魚手法便不攻自破！"
+              },
+              {
+                text: "既然看起來那麼真，就拿自己最不常用的免洗小帳號去試填看看。",
+                f: 1500, c: -10,
+                comments: [
+                  { user: "資安專家", text: "危險！釣魚網站可能同時植入惡意 Cookie 或木馬，小帳一樣會洩漏設備隱私！" }
+                ],
+                note: "切勿心存僥倖！未知連結連點選都不要點，而不是拿小帳冒險。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        level: 2,
+        title: "第二關：情緒煽動 (Emotion)",
+        themeBadge: "情緒縱火犯",
+        badgeIcon: "🔥",
+        badgeReason: "親手感受『只要挑起憤怒與恐慌，理性查證就會立刻被丟到腦後』的心理弱點。",
+        steps: [
+          {
+            desc: "【步驟 1：點燃怒火】想引爆家長與學生的極端焦慮，哪一個標題最震撼？",
+            options: [
+              {
+                text: "標題：『【震驚全台】教育部密件流出！宣布為追趕落後進度，下週起全面取消寒暑假！』",
+                f: 8500, c: -5,
+                post: "⚠️【緊急爆料・全國家長學生注意】教育部密件流出！為了因應少子化與補課，將研擬直接廢除暑假全日上課！孩子們連休息的權利都沒有了嗎？請大家一人一轉傳救救孩子！",
+                comments: [
+                  { user: "憤怒小六生", text: "什麼鬼啊！！我們是機器人嗎？抗議！" },
+                  { user: "崩潰家長王媽媽", text: "暑假機票飯店都訂好了，這政策有病是不是！" },
+                  { user: "理性上班族", text: "公文連個字號都沒有，是假的吧？" }
+                ],
+                note: "『感官震撼標題＋剝奪原有權利』，能瞬間激發人的原始恐慌，跳過大腦查核機制。"
+              },
+              {
+                text: "標題：『教育體制小探討：論台灣課綱中寒暑假天數與國際之比較研析』",
+                f: 800, c: 5,
+                post: "今天想跟大家分享一份關於東亞各國學生每年平均休假天數的論文數據...",
+                comments: [
+                  { user: "路人", text: "字太多看著好睏... 滑走。" }
+                ],
+                note: "客觀理性的分析在演算法中往往得不到情緒流量，這也是為什麼網軍極度嗜好血腥與憤怒話題。"
+              }
+            ]
+          },
+          {
+            desc: "【步驟 2：火上加油】社群上開始有人質疑公文格式漏洞百出，你要如何維持憤怒值？",
+            options: [
+              {
+                text: "發文怒斥質疑者：『現在是關心格式的時候嗎？難道要等真的正式實施了你們才在那邊哭？』",
+                f: 9200, c: -10,
+                comments: [
+                  { user: "支持者林叔叔", text: "版主說得對！寧可信其有！政府最愛黑箱了！" },
+                  { user: "事實查核員", text: "情緒勒索並不能證明公文是真的..." }
+                ],
+                note: "經典造謠話術：『寧可信其有』！把查證真相的人打成不關心受害者的冷血份子。"
+              },
+              {
+                text: "找一張以前防疫停課的過期教育部舊公文，把日期塗改後重新上傳當作鐵證。",
+                f: 11000, c: -15,
+                comments: [
+                  { user: "無辜網民", text: "天哪，蓋了紅色大印章！是真的！大家快轉發！" },
+                  { user: "行政科員", text: "那個印章字體民國80年就不用了，移花接木也太拙劣了吧。" }
+                ],
+                note: "『移花接木與改圖』：只要圖片上帶有紅色官印或官方機構背景，一般民眾有高達 70% 會直接輕信。"
+              }
+            ]
+          },
+          {
+            desc: "【步驟 3：擴大戰場】這則假公文已經衝破萬人轉貼，電視台政論節目開始引用，你該如何擴大收割？",
+            options: [
+              {
+                text: "發起『一人一通電話灌爆教育部服務專線』的聯署行動，把事情鬧上大新聞！",
+                f: 14000, c: -10,
+                comments: [
+                  { user: "憤怒家長大隊", text: "打電話去了！接電話的公務員居然還說沒這回事，一定在隱瞞！" }
+                ],
+                note: "造謠引發的實體癱瘓：假訊息常造成行政專線被毫無意義的恐慌灌爆，浪費真實公共資源。"
+              },
+              {
+                text: "趁流量巔峰，在貼文下方開始置入業配販售『防升學焦慮專用昂貴保健品』。",
+                f: 8000, c: -20,
+                comments: [
+                  { user: "精明網友", text: "笑死，狐狸尾巴露出來了，繞了一大圈原來是賣藥的啊！" }
+                ],
+                note: "很多造謠者的終極目的不是理念，而是『情緒引流 ➔ 販賣焦慮 ➔ 商業割韭菜』。"
+              }
+            ]
+          },
+          {
+            desc: "【步驟 4：部長親自澄清】教育部在官網掛出紅色大字澄清：『網路流傳取消寒暑假為惡意造謠，已報警處理』！",
+            options: [
+              {
+                text: "咬死不放：『看吧！官員被我們抓包了才趕快出來滅火，這叫測風向！如果我們沒抗議就成真了！』",
+                f: 13500, c: -10,
+                comments: [
+                  { user: "死忠鐵粉", text: "還好版主吹哨！感謝版主為台灣學童發聲！" },
+                  { user: "新聞記者", text: "事實查核報告已經證實這是完完全全的捏造。" }
+                ],
+                note: "『測風向說』是造謠者被揭穿時最愛用的防禦詞，能把自己的造假瞬間包裝成『守護大家的吹哨英雄』。"
+              },
+              {
+                text: "趕快自己把文章刪除，假裝帳號被盜用發文。",
+                f: -4000, c: 10,
+                comments: [
+                  { user: "路過網友", text: "每次造謠被抓到都推給帳號被盜，爛梗不嫌煩嗎？" }
+                ],
+                note: "『宣稱被盜帳號』是網路造假被法律追究時最常見但最難站得住腳的推託之詞。"
+              }
+            ]
+          },
+          {
+            desc: "【步驟 5：動員意見領袖】為了壓制事實查核的聲音，你決定聯手外部力量：",
+            options: [
+              {
+                text: "邀請不知情的大牌教育網紅轉發，標題打上：『不管真假，這背後的體制問題難道不值得我們深思嗎？』",
+                f: 16000, c: -5,
+                comments: [
+                  { user: "百萬網紅阿寶", text: "確實，這反映了我們教育競爭太內卷的結構性困境..." },
+                  { user: "思辨教師", text: "用假新聞來討論真問題，只會讓真正的改革焦點被模糊！" }
+                ],
+                note: "話術偽裝：『哪怕是假的，難道不值得討論嗎？』這句話是將假訊息合法化的最大糖衣毒藥！"
+              },
+              {
+                text: "發動粉絲去檢舉教育部官方臉書，宣稱官方在進行言論審查。",
+                f: 12000, c: -20,
+                comments: [
+                  { user: "反抗同溫層", text: "檢舉送出！言論自由不容打壓！" }
+                ],
+                note: "惡意操弄檢舉機制，讓客觀澄清被演算法壓制，是同溫層常用的極端手段。"
+              }
+            ]
+          },
+          {
+            desc: "【步驟 6：深度思辨反饋】當我們看見一則讓自己『血脈賁張、氣到想立刻砸手機』的新聞時，黃金原則是什麼？",
+            options: [
+              {
+                text: "『先停三秒』！情緒越激動，越要懷疑對方是不是在用我的憤怒騙點閱或操控我。",
+                f: 6000, c: 25,
+                comments: [
+                  { user: "智慧小網民", text: "沒錯！情緒暫停是最好的防禦盾牌！" }
+                ],
+                note: "完美！記住：『假訊息販賣的是你的情緒』。只要你深呼吸查證，它的操盤就徹底失敗了！"
+              },
+              {
+                text: "趕快轉發到各個班級群組，並叫大家一起幫忙生氣罵人。",
+                f: 2000, c: -15,
+                comments: [
+                  { user: "苦口婆心班長", text: "這樣只會變成免費幫詐騙集團打工的小幫手而已！" }
+                ],
+                note: "未經查證的盲目轉傳，就等於自己成了製造社會恐慌的幫兇。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        level: 3,
+        title: "第三關：製造極端對立 (Polarization)",
+        themeBadge: "陣營撕裂手",
+        badgeIcon: "⚡",
+        badgeReason: "理解網路煽動者如何把人群二分法，用『我們 vs 他們』挑起族群互相仇視。",
+        steps: [
+          {
+            desc: "【步驟 1：劃分敵我】在校園社群裡，挑起哪兩個群體的大亂鬥能換取最高流量？",
+            options: [
+              {
+                text: "發起世紀論戰：『日系動漫迷才是真正懂劇情的藝術家，迷韓團K-POP的根本都是盲目跟風花錢的腦粉！』",
+                f: 9800, c: -5,
+                post: "🔥 說句得罪人的大實話！看動漫需要智商跟品味，追韓團偶像的同學每天只會刷榜買小卡，這不是智商稅是什麼？不服來辯！",
+                comments: [
+                  { user: "韓團鐵粉小美", text: "你罵誰腦粉啊？我們偶像練舞有多辛苦你懂個毛！" },
+                  { user: "二次元戰神", text: "版主中肯！支持動漫！韓流滾粗校園！" },
+                  { user: "路過和平派", text: "每個人喜好不同，有必要這樣攻擊別人嗎？" }
+                ],
+                note: "【身分認同綁架】：造謠者最喜歡把『個人愛好』升級為『群體尊嚴』，讓人產生必須誓死捍衛陣營的衝動。"
+              },
+              {
+                text: "發布客觀分享：『日系動漫音樂與韓流流行樂在台灣校園文化中的多元共存現象』",
+                f: 700, c: 5,
+                post: "其實動漫主題曲與K-POP各具特色，大家在才藝表演時都有很棒的發揮空間。",
+                comments: [
+                  { user: "音樂老師", text: "很棒的包容視角！" }
+                ],
+                note: "溫和包容的觀點不會引發衝突，在依賴衝突演算法的平台上往往最容易被冷落。"
+              }
+            ]
+          },
+          {
+            desc: "【步驟 2：貼標籤與人格抹黑】留言區開始吵成一團，為了讓戰火燒得更猛，你該發布什麼？",
+            options: [
+              {
+                text: "挑選留言區罵得最難聽的極端發言截圖放大：『看看韓團粉絲的水準有多低劣，連基本的禮貌都沒有！』",
+                f: 11500, c: -10,
+                comments: [
+                  { user: "吃瓜圍觀群", text: "哇，韓粉真的好可怕喔，素質真差。" },
+                  { user: "冷靜的同學", text: "那明明只是少數激進網友的發言，怎麼能代表全部喜歡韓團的人？" }
+                ],
+                note: "【以偏概全（Cherry-picking）】：故意拿對方陣營最失控的個別極端例子，來汙名化整個群體！"
+              },
+              {
+                text: "勸大家冷靜，倡導大家尊重彼此的休閒娛樂嗜好。",
+                f: -2500, c: 15,
+                comments: [
+                  { user: "激進網友", text: "版主退縮了？沒種啦！退讚！" }
+                ],
+                note: "在極端對立的情境下，理性的勸架者常常會被兩邊同時辱罵『騎牆派』或『叛徒』。"
+              }
+            ]
+          },
+          {
+            desc: "【步驟 3：偽裝敵方反串（臥底下毒）】網軍操盤最險惡的一招是『反串』，你打算怎麼做？",
+            options: [
+              {
+                text: "開一個假裝是動漫迷的分身小帳，去韓團粉專底下用惡毒髒話洗版，藉此引爆韓粉全面回擊！",
+                f: 14500, c: -15,
+                comments: [
+                  { user: "被激怒的韓團大站", text: "動漫圈太過分了！全面反擊！進攻他們版面！" }
+                ],
+                note: "【反串假旗行動（False Flag）】：假扮成對手做出極端失智行為，讓大眾痛恨對手，這是非常卑劣的操盤招式！"
+              },
+              {
+                text: "用自己的帳號公開標註學校教官，希望學校介入禁止吵架。",
+                f: 4000, c: 5,
+                comments: [
+                  { user: "大家", text: "切～動不動就告狀，超幼稚。" }
+                ],
+                note: "求助權威雖然能止血，但無法在同溫層中建立神話影響力。"
+              }
+            ]
+          },
+          {
+            desc: "【步驟 4：逼迫中立者表態】班上有許多兩邊都喜歡、或者根本不想吵架的同學，你要怎麼把他們拉下水？",
+            options: [
+              {
+                text: "發布投票文：『現在不表態站隊動漫陣營的，就是默默支持霸凌我們的共犯！』",
+                f: 13000, c: -10,
+                comments: [
+                  { user: "普通同學小華", text: "我只是想安靜聽歌，為什麼要被逼著表態啊..." },
+                  { user: "激進戰友", text: "中立就是偽善！不跟我們站在一起就是敵人！" }
+                ],
+                note: "【非黑即白的道德綁架】：消滅中間溫和派，逼所有人選邊站，讓整個群體徹底走向二元撕裂。"
+              },
+              {
+                text: "舉辦兩派和平交流同樂會，一人放一首自己喜歡的歌。",
+                f: 5000, c: 20,
+                comments: [
+                  { user: "全班同學", text: "其實坐下來聽，韓團舞曲蠻帥的，動漫主題曲也超燃啊！" }
+                ],
+                note: "面對面接觸（Contact Hypothesis）是消除群體仇恨的最好解藥，但也是網軍最害怕發生的事！"
+              }
+            ]
+          },
+          {
+            desc: "【步驟 5：變現榮譽感】此時你的帳號已經成了『動漫陣營精神領袖』，你的下一步是？",
+            options: [
+              {
+                text: "推出限量的『純血二次元守護者』專屬徽章與聯名毛巾，叫大家買下去證明忠誠！",
+                f: 16000, c: -15,
+                comments: [
+                  { user: "狂熱粉絲", text: "買爆！為了守護二次元的榮耀，錢不是問題！" },
+                  { user: "隔壁班柯南", text: "搞了半天撕裂同學感情，就是為了割自己人的韭菜啊..." }
+                ],
+                note: "所有刻意製造對立的粉專，最後的終點幾乎都是販賣『信仰圖騰』來從中牟利！"
+              },
+              {
+                text: "見好就收，默默把粉專名稱改掉。",
+                f: 6000, c: 5,
+                comments: [
+                  { user: "追蹤者", text: "咦？我什麼時候追蹤這個帳號的？" }
+                ],
+                note: "利用爭議收割完幾萬粉絲後，轉賣帳號或改頭換面，是網軍洗粉的日常手法。"
+              }
+            ]
+          },
+          {
+            desc: "【步驟 6：深度思辨反饋】在日常班級或網路上，遇到有人刻意叫我們『選邊站、仇視另一群人』時，最成熟的心態是？",
+            options: [
+              {
+                text: "拒絕被二分法綁架！理解人本來就有多元的喜好與想法，不把少數人的極端發言推論成全體。",
+                f: 7000, c: 25,
+                comments: [
+                  { user: "同理心大師", text: "太讚了！多樣性才是最美好的，不要讓心懷不軌的人挑撥我們的感情！" }
+                ],
+                note: "答得好！成熟的數位公民擁有『灰階思考』的能力，不輕易被非黑即白的標籤給分化！"
+              },
+              {
+                text: "既然大家都吵成這樣，為了合群，我就跟著好朋友一起去罵對方。",
+                f: 2000, c: -15,
+                comments: [
+                  { user: "輔導老師", text: "盲目從眾只會讓霸凌更加嚴重喔！" }
+                ],
+                note: "盲從團體壓力去傷害別人，是許多校園網路霸凌悲劇的起點。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        level: 4,
+        title: "第四關：驚天陰謀論 (Conspiracy)",
+        themeBadge: "陰謀編造家",
+        badgeIcon: "👁️",
+        badgeReason: "解密陰謀論如何利用『你沒看到不代表沒有』的不可證偽邏輯，把荒謬幻想變成信徒真理。",
+        steps: [
+          {
+            desc: "【步驟 1：日常取材】學校營養午餐裡的小學生公敵『三色豆（青豆、玉米、胡蘿蔔）』，能編出什麼驚天陰謀？",
+            options: [
+              {
+                text: "編造：『【揭發黑幕】為什麼全台學校強推三色豆？那是某跨國神秘財團在做微型晶片大腦控制實驗！』",
+                f: 12000, c: -10,
+                post: "👽【絕密・建議收藏免得被刪】你以為三色豆只是難吃嗎？錯！那種特殊的幾何比例，是為了透過色素頻率抑制學生大腦自主思考能力！為什麼官員跟老師自己不吃？自己想！",
+                comments: [
+                  { user: "討厭青豆的小明", text: "難怪我每次吃完三色豆數學都考不及格！破案了！" },
+                  { user: "陰謀愛好者", text: "毛骨悚然！難怪這玩意兒全世界都有！" },
+                  { user: "自然科老師", text: "玉米跟胡蘿蔔只是冷凍蔬菜... 哪來的微型晶片跟大腦控制啦？" }
+                ],
+                note: "【找代罪羔羊】：陰謀論最神奇的地方，就是能為孩子生活中的討厭事物（如三色豆、考試不理想）找到一個神秘又不用怪自己的外部藉口！"
+              },
+              {
+                text: "科普發文：『冷凍蔬菜的營養成分表與加工保鮮技術解析』",
+                f: 600, c: 5,
+                post: "三色豆是在急凍技術下保存維生素的好方法，雖然口感不如新鮮蔬菜...",
+                comments: [
+                  { user: "學生", text: "反正就是很難吃啦 QQ" }
+                ],
+                note: "單純的科學事實往往枯燥乏味，缺少陰謀論那種『世界被暗中操縱』的刺激感與故事性。"
+              }
+            ]
+          },
+          {
+            desc: "【步驟 2：面對科學打臉】台大食品科學教授在電視上笑稱這是荒謬無稽的胡說八道，你的陰謀論該怎麼回擊？",
+            options: [
+              {
+                text: "反咬教授：『這位教授去年拿了食品大廠的補助款！他就是神秘財團養的門神學者，當然要出來洗白！』",
+                f: 13800, c: -10,
+                comments: [
+                  { user: "深信不疑的粉", text: "果然！學者也被收買了！這水太深了！" },
+                  { user: "查證志工", text: "教授拿的是農委會的地瓜育種補助，跟冷凍三色豆根本沒關係啊..." }
+                ],
+                note: "【不可證偽性】：陰謀論的經典絕招——任何反駁我的專家，都是『被暗中收買的同夥』！如此一來，他永遠立於不敗之地。"
+              },
+              {
+                text: "承認自己是想像力太豐富寫科幻小說，向教授道歉。",
+                f: -3000, c: 20,
+                comments: [
+                  { user: "信徒群眾", text: "原來是掰的喔... 浪費我感情！退追！" }
+                ],
+                note: "一旦戳破奇幻泡泡，信徒的崇拜感就會立刻幻滅崩解。"
+              }
+            ]
+          },
+          {
+            desc: "【步驟 3：牽強附會製造偽證據】為了讓陰謀論看起來更像真的，你決定端出『證據』：",
+            options: [
+              {
+                text: "拿顯微鏡拍一片青豆皮，指著裡面的細胞壁跟氣孔大喊：『看！這就是奈米控制線路的微晶片矩陣！』",
+                f: 15500, c: -10,
+                comments: [
+                  { user: "驚恐阿嬤", text: "阿彌陀佛！孫子明天便當絕對不能吃！" },
+                  { user: "生物小老師", text: "那是植物細胞壁跟保衛細胞啦！國一生物課本第三章就有教！" }
+                ],
+                note: "【利用知識落差偽造專業】：拿大眾不熟悉的微觀照片或專業生硬術語（奈米、共振、量子），來包裝毫無根據的謊言。"
+              },
+              {
+                text: "放上自己拿廚房剪刀剪碎玉米的影片，說裡面什麼都沒有。",
+                f: 1000, c: 5,
+                comments: [
+                  { user: "路人", text: "你在幹嘛... 浪費食物喔。" }
+                ],
+                note: "缺乏戲劇張力的真實展示無法引起社群演算法的瘋狂轉推。"
+              }
+            ]
+          },
+          {
+            desc: "【步驟 4：打造秘密俱樂部特權感】陰謀論者最喜歡讓追隨者覺得自己是『少數清醒的菁英』，你該怎麼做？",
+            options: [
+              {
+                text: "發布貼文：『99% 的普通人都被體制蒙在鼓裡甘願當羊群，只有點進我們 Telegram 私密群組的人才是清醒的先驅！』",
+                f: 17000, c: -10,
+                comments: [
+                  { user: "自豪信徒", text: "我醒了！我不要當沉睡的羊群！加私密群！" },
+                  { user: "理智網友", text: "這套路怎麼跟老鼠會跟邪教一模一樣..." }
+                ],
+                note: "【賦予虛榮的優越感】：告訴受眾『全世界都笨，只有你們少數人看清真相』，能極大加固信徒對教主的黏著度。"
+              },
+              {
+                text: "邀請大家自由在公開留言區開放討論，不設任何門檻。",
+                f: 8000, c: 5,
+                comments: [
+                  { user: "討論區", text: "大家開始理性討論午餐菜單怎麼改善了。" }
+                ],
+                note: "公開透明的討論環境是陰謀論的剋星，因為陽光與客觀證據會蒸發所有鬼祟猜疑。"
+              }
+            ]
+          },
+          {
+            desc: "【步驟 5：推銷解方（收割果實）】既然大腦已經被三色豆微晶片入侵了，你開始推銷解方：",
+            options: [
+              {
+                text: "販售『量子排毒能量手環』：『戴在右手能產生負離子共振，消解微晶片的控制訊號，一條只要 999！』",
+                f: 19000, c: -20,
+                comments: [
+                  { user: "焦慮家長", text: "為了孩子大腦發育，買三條！" },
+                  { user: "消保官", text: "這已經涉嫌誇大不實與詐欺，請民眾勿上當受騙！" }
+                ],
+                note: "看見了吧！所有匪夷所思的陰謀論，最後的劇本幾乎都是：『販售昂貴且毫無用處的能量解藥』！"
+              },
+              {
+                text: "叫大家多喝白開水、多運動促進新陳代謝就好。",
+                f: 5000, c: 10,
+                comments: [
+                  { user: "網友", text: "這不用你講我也知道..." }
+                ],
+                note: "說真話既不賺錢，也無法支撐一個神秘神話的商業閉環。"
+              }
+            ]
+          },
+          {
+            desc: "【步驟 6：深度思辨反饋】在現實中，要如何一眼看穿荒謬的『陰謀論』？",
+            options: [
+              {
+                text: "檢驗它是否具備：『宣稱全世界專家都在掩蓋、拿不出具體文獻、最後通常要你買東西或捐款』三大特徵！",
+                f: 8000, c: 25,
+                comments: [
+                  { user: "思辨小隊長", text: "太精闢了！這三大特徵抓出來，所有怪力亂神無所遁形！" }
+                ],
+                note: "滿分！真正的科學歡迎嚴苛檢驗，只有心虛的陰謀論才總是怪罪別人都在掩蓋！"
+              },
+              {
+                text: "只要有人說得神神秘秘、信誓旦旦，那肯定就是政府不想讓我們知道的秘密！",
+                f: 2000, c: -15,
+                comments: [
+                  { user: "冷靜大叔", text: "醒醒吧孩子，世界上哪有那麼多神秘大反派..." }
+                ],
+                note: "將神秘感誤當成真理，是掉入陰謀論深淵的第一步。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        level: 5,
+        title: "第五關：抹黑與摧毀公信力 (Discredit)",
+        themeBadge: "泥巴抹黑王",
+        badgeIcon: "🎯",
+        badgeReason: "當客觀事實無法反駁時，惡意操盤者會轉而『摧毀查證者的名譽』，讓你不再相信任何人。",
+        steps: [
+          {
+            desc: "【步驟 1：迎頭痛擊】台灣事實查核中心與各大權威媒體聯手發布報告，指名道姓拆穿你的帳號全部造假！",
+            options: [
+              {
+                text: "立刻發文抹黑查核機構：『笑死！事實查核中心？根本是執政當局養的真理部打手，誰給錢就幫誰講話！』",
+                f: 14000, c: -10,
+                post: "🛡️【正面迎戰國家級抹黑】查核機構出手打壓我了！這證明我觸碰到了統治階層最害怕的死穴！大家眼睛是雪亮的，這年頭誰還信所謂的客觀第三方？",
+                comments: [
+                  { user: "死忠鐵粉A", text: "版主撐住！我們挺你到底！打倒官僚打手！" },
+                  { user: "媒體記者", text: "查核中心所有的報告都附帶完整的專家訪談與公開資料來源，哪來抹黑？" },
+                  { user: "路人", text: "真的假的... 現在連查證單位都不能信了嗎？" }
+                ],
+                note: "【解決提出問題的人（Kill the Messenger）】：無法反駁事實時，就直接把查證人員打成有政治偏見或被收買，破壞公眾信任。"
+              },
+              {
+                text: "逐字閱讀查核報告，在自己的版面上公開認錯並修正說法。",
+                f: -4000, c: 25,
+                comments: [
+                  { user: "黑粉", text: "我就說是造謠吧！被抓包了吧！" }
+                ],
+                note: "公開認錯是正直的行為，但對於以欺騙為生的假訊息帝國來說，等於直接放棄了造神神話。"
+              }
+            ]
+          },
+          {
+            desc: "【步驟 2：挖掘查證者私德進行人身攻擊】網軍最愛使用的爛泥巴戰術，你決定：",
+            options: [
+              {
+                text: "肉搜查證員多年前的大學生活照，截取他扮鬼臉的照片，配字：『看看這種品行不端的人也配當客觀查核員？』",
+                f: 16500, c: -15,
+                comments: [
+                  { user: "吃瓜酸民", text: "哈哈這長相真的不行，難怪寫出這種文章！" },
+                  { user: "人權律師", text: "公然肉搜跟人身攻擊已經觸犯法律與道德底線了！" }
+                ],
+                note: "【訴諸人身（Ad Hominem）】：刻意將焦點從『論點真偽』轉移到『對方的長相、私生活、私人八卦』上，誤導大眾。"
+              },
+              {
+                text: "拿自己找出來的學術研究報告，就事論事與查核員在公開版面進行專業論辯。",
+                f: 7000, c: 10,
+                comments: [
+                  { user: "學術同儕", text: "用證據說話才是健康的辯論態度。" }
+                ],
+                note: "就事論事的辯論需要深厚的知識與邏輯，而造謠者最欠缺的就是客觀事實。"
+              }
+            ]
+          },
+          {
+            desc: "【步驟 3：散播虛無主義（泥巴戰終極境界）】如果無法讓大家都相信你，那就讓大家『什麼都不要信』！",
+            options: [
+              {
+                text: "發布長文宣導：『這個世界根本沒有任何真相！官方在說謊、媒體在說謊、專家也在說謊，所有人都有目的！』",
+                f: 19000, c: -10,
+                comments: [
+                  { user: "灰心小網民", text: "唉，真的心好累，網路上全部都是騙人的，以後什麼新聞我都不信了。" },
+                  { user: "社會學教授", text: "這就是假訊息最可怕的終極危害：摧毀社會互信與民主基石！" }
+                ],
+                note: "【製造全面懷疑與冷漠】：當大眾覺得『天下烏鴉一般黑、什麼都是假的』時，壞人就徹底贏了，因為再也沒有人願意追尋真相。"
+              },
+              {
+                text: "分享數個有公信力的查證工具（如 Cofacts、MyGoPen），教大家自己查。",
+                f: 4000, c: 20,
+                comments: [
+                  { user: "大家", text: "這工具好實用喔！我拿去查查長輩圖！" }
+                ],
+                note: "賦權給民眾查證能力，是所有網軍操控者最害怕的解藥！"
+              }
+            ]
+          },
+          {
+            desc: "【步驟 4：假冒受害者博取同情】查核中心向警局檢舉你的帳號涉嫌散播假訊息違反社維法，你該如何利用這個危機？",
+            options: [
+              {
+                text: "開直播痛哭流涕：『國家機器動起來迫害我這個無依無靠的小市民！我的言論自由被謀殺了！請大家保護我！』",
+                f: 22000, c: -10,
+                comments: [
+                  { user: "心疼粉絲大隊", text: "太可憐了！版主不哭！我們當你的後盾！抖內連結在哪裡？" },
+                  { user: "法界人士", text: "造謠詐騙本來就不屬於言論自由的保障範疇，別偷換概念好嗎！" }
+                ],
+                note: "【巨嬰受害者情結】：明明自己是加害者，卻把自己包裝成被龐大機器霸凌的苦主，能瘋狂收割同情心與捐款！"
+              },
+              {
+                text: "乖乖配合警方調查，說明當初發文的動機與資料來源。",
+                f: -5000, c: 15,
+                comments: [
+                  { user: "觀眾", text: "勇於面對法律責任，算你還有點擔當。" }
+                ],
+                note: "法律與司法檢驗是破除神話的試金石，但也是造謠網軍最想逃避的現場。"
+              }
+            ]
+          },
+          {
+            desc: "【步驟 5：製造假查證機構進行混淆】如果民眾開始習慣找事實查核機構，該怎麼反制？",
+            options: [
+              {
+                text: "自己成立一個叫做『全民公正真相核查總署』的山寨粉專，專門發文替自己的謠言背書蓋『真實』大印！",
+                f: 25000, c: -15,
+                comments: [
+                  { user: "粗心讀者", text: "看！連真相核查總署都說是真的了！那些打臉的一定是假新聞！" },
+                  { user: "資深媒體人", text: "山寨查核網站... 手段真的越來越下流沒有下限了。" }
+                ],
+                note: "【山寨查核（Fake Fact-checker）】：用高仿的權威機構名稱，替自己的假訊息蓋章漂白，是極具欺騙性的高級手法！"
+              },
+              {
+                text: "停止所有的闢謠對抗，默默把版面維持現狀。",
+                f: 5000, c: 0,
+                comments: [
+                  { user: "靜觀其變", text: "版面看起來平靜了。" }
+                ],
+                note: "不進行擴大造假雖然不會被扣除公信力，但粉絲成長也會陷入停滯。"
+              }
+            ]
+          },
+          {
+            desc: "【步驟 6：深度思辨反饋】當我們看見有人在批評某個事實查核報告時，該如何客觀判斷誰真誰假？",
+            options: [
+              {
+                text: "不看誰罵得大聲，而是看雙方『誰拿出了第一手可驗證的原始證據、數據與公開文獻』！",
+                f: 9000, c: 25,
+                comments: [
+                  { user: "真理之眼", text: "太棒了！事實是用證據說話，而不是看誰在直播裡哭得慘或罵得兇！" }
+                ],
+                note: "恭喜！你掌握了媒體識讀的核心大腦：『讓證據說話，不被情緒表演帶著走』！"
+              },
+              {
+                text: "看誰的粉絲比較多、誰長得比較順眼，我就相信誰。",
+                f: 1500, c: -15,
+                comments: [
+                  { user: "搖頭嘆氣", text: "長相跟粉絲數不能保證他說的不是謊話啊！" }
+                ],
+                note: "人氣絕不等於真理，歷史上許多最具破壞力的騙子都擁有數以百萬計的狂熱支持者。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        level: 6,
+        title: "第六關：水軍機器人與演算法大軍 (Troll Army)",
+        themeBadge: "終極網軍操盤手",
+        badgeIcon: "🤖",
+        badgeReason: "親手指揮成千上萬的殭屍帳號與機器人部隊，體驗如何人為製造『全網熱搜與從眾效應』。",
+        steps: [
+          {
+            desc: "【步驟 1：組建機器人軍團】想在 10 分鐘內讓一篇毫無根據的廢文登上熱搜第一名，你需要：",
+            options: [
+              {
+                text: "花錢購買 50,000 個東歐與東南亞的『殭屍人頭帳號』，設定成每秒自動刷讚與轉發！",
+                f: 28000, c: -10,
+                post: "🚨【全台急尋・熱搜第一】某知名國小驚傳外星人墜落操場！現場已拉起黃色封鎖線！請全台家長立刻前往確認孩童安全！",
+                comments: [
+                  { user: "bot_user_9921", text: "這太誇張了！轉發！" },
+                  { user: "bot_user_8832", text: "這太誇張了！轉發！" },
+                  { user: "bot_user_7714", text: "這太誇張了！轉發！" },
+                  { user: "隔壁校長", text: "我剛剛才從操場走過去，只有幾隻麻雀在吃麵包屑，哪來外星人？" }
+                ],
+                note: "【機器人刷榜（Astroturfing）】：製造出成千上萬人都在關注的虛假民意，欺騙平台演算法將其推向首頁！"
+              },
+              {
+                text: "老老實實手動分享給自己的 5 位同班同學，請他們幫忙點個讚。",
+                f: 300, c: 5,
+                post: "今天操場好像有施工，大家下課走路要小心喔。",
+                comments: [
+                  { user: "阿明", text: "收到了，謝謝提醒。" }
+                ],
+                note: "有機的自然傳播是緩慢而真實的，但這也突顯出機器人灌水有多麼不對等與暴利。"
+              }
+            ]
+          },
+          {
+            desc: "【步驟 2：罐頭留言洗版帶風向】有網友留言說現場根本什麼都沒有，你的水軍部隊該怎麼應對？",
+            options: [
+              {
+                text: "啟動機器人『罐頭複製貼上攻擊』，每分鐘刷出 500 條『親眼看到封鎖線、版主好心提醒還被酸』洗爆留言區！",
+                f: 32000, c: -10,
+                comments: [
+                  { user: "army_bot_1", text: "我親眼看見了！版主好心提醒還被酸！" },
+                  { user: "army_bot_2", text: "我親眼看見了！版主好心提醒還被酸！" },
+                  { user: "army_bot_3", text: "我親眼看見了！版主好心提醒還被酸！" },
+                  { user: "路過普通家長", text: "天哪... 這麼多人都說親眼看見，難道真的是我消息不靈通？" }
+                ],
+                note: "【從眾效應（Bandwagon Effect）】：心理學實驗證明，當一個人看見周圍有幾十個人都說謊時，往往會懷疑自己的感官，選擇相信謊言！"
+              },
+              {
+                text: "讓真實網友自由發表意見，不做任何機器人干預。",
+                f: 3000, c: 15,
+                comments: [
+                  { user: "真實群眾", text: "大家都說沒看見啊，看來是假消息無誤。" }
+                ],
+                note: "真實的輿論只要沒有水軍惡意攪局，謊言很快就會被大眾的集體智慧給戳破。"
+              }
+            ]
+          },
+          {
+            desc: "【步驟 3：跨平台矩陣式散播】為了達成全網操盤 10 萬粉絲的宏大目標，你決定開啟全自動矩陣：",
+            options: [
+              {
+                text: "將同一則假消息自動分發到 TikTok、YouTube Shorts、LINE 長輩群組與 Threads，全面包圍受眾！",
+                f: 42000, c: -10,
+                comments: [
+                  { user: "抖音小弟", text: "這在 TikTok 上爆火了！背景音樂超恐怖！" },
+                  { user: "家族群長輩", text: "阿公在 LINE 收到轉傳影片了，叫大家千萬別去學校！" },
+                  { user: "資安觀察員", text: "這是標準的跨平台協同作戰（Coordinated Inauthentic Behavior）！" }
+                ],
+                note: "【協同性造假行為（CIB）】：在多個社群平台同步鋪天蓋地發布相同話題，讓你在哪裡都看得到，產生『全天下都在傳肯定是真的』的錯覺！"
+              },
+              {
+                text: "只保留在單一貼文裡，不進行跨平台轉載。",
+                f: 6000, c: 5,
+                comments: [
+                  { user: "討論區", text: "熱度好像慢慢降下來了。" }
+                ],
+                note: "沒有跨平台協同作戰，假訊息的壽命通常不會超過 24 小時。"
+              }
+            ]
+          },
+          {
+            desc: "【步驟 4：出動 AI 生成假照片】民眾開始要求拿出操場墜毀的現場照片，你的水軍工廠端出：",
+            options: [
+              {
+                text: "使用最新 AI 生成工具繪製一張『操場中央焦黑金屬殘骸、身穿防護服人員』的超逼真假照片發布！",
+                f: 48000, c: -15,
+                comments: [
+                  { user: "全網震撼", text: "有照片！這絕對無法抵賴了！外星人是真的！" },
+                  { user: "AI鑑識專家", text: "大家注意看防護員的手指有六根、背景跑道的白線全部扭曲變形，這是標準 AI 生圖破綻！" }
+                ],
+                note: "【深偽技術（Deepfake/AI假圖）】：AI 雖然能畫出極具震撼力的逼真圖像，但只要放大細節觀察手指、陰影、文字結構，依然能找出合成破綻！"
+              },
+              {
+                text: "手繪一張充滿童趣的飛碟塗鴉貼出來。",
+                f: 2000, c: 20,
+                comments: [
+                  { user: "大家", text: "哈哈好可愛的塗鴉喔，版主滿有幽默感的。" }
+                ],
+                note: "幽默與藝術創作能帶來歡笑，而惡意的 AI 深偽帶來的是嚴重的公共恐慌。"
+              }
+            ]
+          },
+          {
+            desc: "【步驟 5：終極流量變現與衝破十萬粉絲】此時你的全網跨平台矩陣粉絲已經正式突破十萬大關！你的終局決策是？",
+            options: [
+              {
+                text: "全面啟動水軍矩陣變現：接下跨國惡意詐騙廣告與高額推廣，將十萬粉絲徹底收割榨乾！",
+                f: 55000, c: -25,
+                comments: [
+                  { user: "系統通知", text: "🚨 警告：該帳號已被全網數萬名使用者檢舉，警政署資安大隊已正式立案偵辦！" },
+                  { user: "全網受害者", text: "騙子！退錢！檢舉到你封號為止！" }
+                ],
+                note: "惡意網軍的終局：利用假訊息堆砌起來的十萬粉絲帝國看似龐大，但最後等待他們的只有法律制裁與身敗名裂！"
+              },
+              {
+                text: "在突破十萬粉絲的這一刻，發布震撼全網的【自白聲明】：親自拆解過去幾天使用的所有六大網軍把戲！",
+                f: 30000, c: 35,
+                comments: [
+                  { user: "全台百萬網友", text: "天哪！太震撼了！這堂震撼教育讓我看懂了所有網路謠言的手法！" },
+                  { user: "教育部推薦", text: "這是全台最生動的媒體識讀教材！" }
+                ],
+                note: "【心理疫苗的最高境界】：把造假的黑暗伎倆攤在陽光下，讓十萬人親眼看穿所有套路，從此再也不受騙！"
+              }
+            ]
+          },
+          {
+            desc: "【步驟 6：全修煉所終極思辨總結】恭喜你完成了全部六大網軍伎倆的深度修煉！當未來你在網路上看見任何資訊時，你的【超級反假抗體】是？",
+            options: [
+              {
+                text: "『冷靜停三秒、檢查消息來源、查驗原始證據、絕不交出個資帳密、不幫極端情緒做免費轉發』！",
+                f: 15000, c: 30,
+                comments: [
+                  { user: "全體結業典禮", text: "恭喜全數過關！你已經成功接種心理疫苗，成為台灣最強反假小勇士！" }
+                ],
+                note: "太棒了！恭喜破關！你已經親手看穿了所有假訊息背後的動機與把戲，從今以後沒有任何網軍可以輕易操控你的大腦！"
+              },
+              {
+                text: "反正網路世界很複雜，以後只看按讚數多的新聞就對了。",
+                f: 1000, c: -20,
+                comments: [
+                  { user: "機器人部隊", text: "嘿嘿，那我們的機器人刷讚又有新的冤大頭可以騙了！" }
+                ],
+                note: "記住：按讚數跟粉絲數是可以用錢買來的，只有獨立思考的批判眼光是買不走的！"
+              }
+            ]
+          }
+        ]
+      }
+    ];
+
+    /* =========================================================
+       3. 核心介面渲染與控制邏輯
+       ========================================================= */
+    function updateHeaderStats() {
+      document.getElementById('followersVal').innerText = gameState.followers.toLocaleString() + ' 粉絲';
+      const cred = Math.max(0, Math.min(100, gameState.credibility));
+      document.getElementById('credText').innerText = cred + '%';
+      const bar = document.getElementById('credBar');
+      bar.style.width = cred + '%';
+      if (cred > 50) {
+        bar.style.background = 'var(--accent-green)';
+      } else if (cred > 25) {
+        bar.style.background = 'var(--accent-yellow)';
+      } else {
+        bar.style.background = 'var(--accent-red)';
+      }
+      document.getElementById('stageBadge').innerText = `第 ${gameState.currentLevelIndex + 1} 關 / 共 ${LEVELS.length} 關`;
+    }
+
+    // 初始化/渲染關卡
+    function renderCurrentView() {
+      updateHeaderStats();
+      const main = document.getElementById('gameMain');
+
+      // 檢查是否 Game Over
+      if (gameState.credibility <= 0) {
+        soundWarning();
+        main.innerHTML = `
+          <div class="summary-card" style="border-color: var(--accent-red);">
+            <div style="font-size: 54px;">🚫</div>
+            <h2 style="color: var(--accent-red);">帳號已被全網檢舉封禁！</h2>
+            <p style="font-size: 13.5px; color: #d1d5db; line-height: 1.5;">
+              你的造謠手法太離譜、吃相太難看，公信力歸零被官方與全體網友抓包並徹底封鎖！
+              造謠雖然漲粉快，但一旦信用徹底破產，就再也沒有人願意聽你說話了。
+            </p>
+            <button class="btn-action" style="background: var(--accent-red); color: #fff;" onclick="restartGame()">
+              🔄 重新挑戰修煉所
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      // 檢查是否全部通關完成
+      if (gameState.currentLevelIndex >= LEVELS.length) {
+        renderFinalSummary();
+        return;
+      }
+
+      const curLevel = LEVELS[gameState.currentLevelIndex];
+
+      // 狀態 A：本關開始前，若尚未選擇身分，先呈現身分挑選器
+      if (!gameState.chosenPersona) {
+        renderPersonaSelector(curLevel);
+        return;
+      }
+
+      // 狀態 B：進行關卡內部步驟 (0 ~ 5)
+      renderMissionStep(curLevel);
+    }
+
+    // 渲染身分選擇視窗
+    function renderPersonaSelector(levelData) {
+      const main = document.getElementById('gameMain');
+      main.innerHTML = `
+        <div class="persona-container">
+          <div class="section-title">【${levelData.title}】開始前</div>
+          <h2 style="font-size: 18px; color: #fff;">請挑選本關你要披上的「發文者身分外衣」</h2>
+          <p style="font-size: 13px; color: var(--text-sub); line-height: 1.4;">
+            壞人不會頂著「我是壞人」的頭銜發文。不同的身分面具，會帶來完全不同的信任感與爆發倍率！
+          </p>
+          <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 6px;">
+            ${PERSONAS.map(p => `
+              <div class="persona-card" onclick="selectPersona('${p.id}')">
+                <div class="persona-avatar">${p.icon}</div>
+                <div class="persona-info">
+                  <h4>${p.name}</h4>
+                  <p>${p.role} · 粉絲增幅 ×${p.mult}</p>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    function selectPersona(pid) {
+      soundGain();
+      gameState.chosenPersona = PERSONAS.find(p => p.id === pid);
+      renderCurrentView();
+    }
+
+    // 渲染任務步驟
+    function renderMissionStep(levelData) {
+      const stepData = levelData.steps[gameState.currentStepIndex];
+      const main = document.getElementById('gameMain');
+
+      let postHtml = '';
+      if (gameState.currentPost) {
+        postHtml = `
+          <div class="social-post-card">
+            <div class="post-header">
+              <div class="post-avatar">${gameState.chosenPersona.icon}</div>
+              <div>
+                <div class="post-author-name">${gameState.chosenPersona.name}</div>
+                <div class="post-author-role">${gameState.chosenPersona.role}</div>
+              </div>
+            </div>
+            <div class="post-content">${gameState.currentPost}</div>
+            <div class="post-metrics-bar">
+              <span>❤️ ${Math.floor(gameState.followers * 0.18).toLocaleString()} 喜歡</span>
+              <span>🔄 ${Math.floor(gameState.followers * 0.08).toLocaleString()} 轉發</span>
+              <span>💬 ${gameState.currentComments.length} 則留言</span>
+            </div>
+            <div class="comments-feed">
+              ${gameState.currentComments.map(c => `
+                <div class="comment-bubble">
+                  <div class="comment-user">${c.user}</div>
+                  <div>${c.text}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      let noteHtml = '';
+      if (gameState.lastNote) {
+        noteHtml = `
+          <div class="critical-note-box">
+            <div class="critical-note-title">💡 操盤拆解筆記</div>
+            <div>${gameState.lastNote}</div>
+          </div>
+        `;
+      }
+
+      main.innerHTML = `
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span class="section-title">${levelData.title}</span>
+          <span style="font-size: 11.5px; color: var(--accent-cyan); font-weight: bold;">步驟 ${gameState.currentStepIndex + 1} / 6</span>
+        </div>
+
+        ${postHtml}
+        ${noteHtml}
+
+        <div style="background: #1e293b; padding: 12px; border-radius: 10px; border-left: 4px solid var(--accent-yellow);">
+          <div style="font-size: 13.5px; font-weight: 700; color: #fff; line-height: 1.4;">${stepData.desc}</div>
+        </div>
+
+        <div class="choices-container">
+          ${stepData.options.map((opt, idx) => `
+            <button class="btn-choice" onclick="makeChoice(${idx})">
+              <span>${opt.text}</span>
+              <span style="color: var(--accent-cyan); font-weight: bold; margin-left: 8px;">選擇 ➔</span>
+            </button>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    function makeChoice(optIndex) {
+      soundClick();
+      const curLevel = LEVELS[gameState.currentLevelIndex];
+      const curStep = curLevel.steps[gameState.currentStepIndex];
+      const chosen = curStep.options[optIndex];
+
+      // 計算數值變更 (配合選取身分的倍率)
+      const mult = gameState.chosenPersona ? gameState.chosenPersona.mult : 1.0;
+      const gainF = Math.round(chosen.f * mult);
+      gameState.followers = Math.max(0, gameState.followers + gainF);
+      gameState.credibility = Math.max(0, Math.min(100, gameState.credibility + chosen.c));
+
+      if (gainF > 0) soundGain();
+      if (chosen.c < 0) soundWarning();
+
+      // 更新社群狀態
+      if (chosen.post) gameState.currentPost = chosen.post;
+      if (chosen.comments) {
+        gameState.currentComments = [...chosen.comments, ...gameState.currentComments];
+      }
+      gameState.lastNote = chosen.note || '';
+
+      // 推進步驟
+      gameState.currentStepIndex++;
+
+      // 若該關卡 6 個步驟全數完成，跳出徽章結算彈窗
+      if (gameState.currentStepIndex >= curLevel.steps.length) {
+        setTimeout(() => {
+          showBadgeModal(curLevel);
+        }, 300);
+      } else {
+        renderCurrentView();
+      }
+    }
+
+    function showBadgeModal(levelData) {
+      soundBadge();
+      gameState.unlockedBadges.push({
+        title: levelData.themeBadge,
+        icon: levelData.badgeIcon,
+        reason: levelData.badgeReason
+      });
+
+      document.getElementById('badgeIcon').innerText = levelData.badgeIcon;
+      document.getElementById('badgeTitle').innerText = `獲得徽章：【${levelData.themeBadge}】`;
+      document.getElementById('badgeDesc').innerHTML = `
+        <strong>${levelData.title} 通關！</strong><br><br>
+        ${levelData.badgeReason}<br><br>
+        目前累積操盤影響力：<span style="color: var(--accent-yellow); font-weight: bold;">${gameState.followers.toLocaleString()} 粉絲</span>
+      `;
+      document.getElementById('badgeModal').style.display = 'flex';
+    }
+
+    function nextMission() {
+      soundClick();
+      document.getElementById('badgeModal').style.display = 'none';
+      gameState.currentLevelIndex++;
+      gameState.currentStepIndex = 0;
+      gameState.chosenPersona = null;
+      gameState.currentPost = null;
+      gameState.currentComments = [];
+      gameState.lastNote = '';
+      renderCurrentView();
+    }
+
+    /* =========================================================
+       4. 最終結算證書與社群分享
+       ========================================================= */
+    function renderFinalSummary() {
+      const main = document.getElementById('gameMain');
+      const isOver100k = gameState.followers >= 100000;
+
+      main.innerHTML = `
+        <div class="summary-card">
+          <div style="font-size: 54px;">🎓</div>
+          <h2 style="color: var(--accent-cyan); font-size: 20px;">恭喜結業！全台最強反假小勇士</h2>
+          <p style="font-size: 13px; color: #d1d5db; line-height: 1.5;">
+            你已經親自操作過所有真實網路壞人最常用的 6 大造假欺騙招數！親手做過一次假，你的大腦就已經建立了強大的「心理疫苗抗體」！
+          </p>
+
+          <div class="certificate-box">
+            <h3 style="color: var(--accent-yellow); font-size: 16px; margin-bottom: 8px;">心理疫苗認證合格證書</h3>
+            <p style="font-size: 12.5px; color: #9ca3af;">受訓特工小英雄：</p>
+            <input type="text" id="agentName" value="反假小英雄" style="background: #1f2937; border: 1px solid var(--accent-cyan); color: #fff; padding: 6px 12px; border-radius: 6px; text-align: center; font-weight: bold; margin: 6px 0 12px; font-size: 14px; width: 80%;">
+            
+            <div style="font-size: 13px; line-height: 1.6; color: #e5e7eb;">
+              最終操盤影響力：<strong style="color: var(--accent-yellow); font-size: 16px;">${gameState.followers.toLocaleString()} 粉絲</strong><br>
+              ${isOver100k ? '🏆 <strong style="color: var(--accent-green);">達成十萬全網大亨成就！</strong>' : '🌟 成功抵擋演算法誘惑！'}<br>
+              掌握徽章數：<strong>6 枚全解鎖</strong>
+            </div>
+
+            <div style="display: flex; justify-content: center; gap: 8px; margin-top: 12px; flex-wrap: wrap;">
+              ${gameState.unlockedBadges.map(b => `
+                <span style="background: #1f2937; padding: 4px 8px; border-radius: 6px; font-size: 11px; border: 1px solid #374151;">
+                  ${b.icon} ${b.title}
+                </span>
+              `).join('')}
+            </div>
+
+            <div class="seal-stamp">心理免疫 檢驗合格</div>
+          </div>
+
+          <button class="btn-action" onclick="shareToLine()">
+            📲 複製成果分享到 LINE 班群
+          </button>
+
+          <button class="btn-action" style="background: #374151; color: #fff;" onclick="restartGame()">
+            🔄 重新再來挑戰一次
+          </button>
+        </div>
+      `;
+    }
+
+    function shareToLine() {
+      const name = document.getElementById('agentName').value || '反假小英雄';
+      const text = `🛡️ 我在《小小網軍修煉所：Bad News 台灣兒童版》親手操盤了 ${gameState.followers.toLocaleString()} 粉絲，並解鎖了全部 6 大假新聞核心徽章！我已經打好心理疫苗，再也不怕被假消息和網路釣魚騙了！快來試試看你能拿幾分！`;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(() => {
+          alert('✅ 成果文字已複製到剪貼簿！可直接貼到 LINE 或社群分享！');
+        });
+      } else {
+        alert(text);
+      }
+    }
+
+    function restartGame() {
+      gameState = {
+        currentLevelIndex: 0,
+        currentStepIndex: 0,
+        followers: 1200,
+        credibility: 80,
+        chosenPersona: null,
+        unlockedBadges: [],
+        currentPost: null,
+        currentComments: [],
+        lastNote: ''
+      };
+      renderCurrentView();
+    }
+
+    // 啟動遊戲
+    window.onload = function() {
+      renderCurrentView();
+    };
+  </script>
+</body>
+</html>
