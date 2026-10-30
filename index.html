@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>小小網軍修煉所：Bad News 台灣繁中兒童版</title>
+  <title>小小網軍修煉所：Bad News 台灣繁中兒童版（小朋友簡單版）</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Fonts & Font Awesome Icons -->
@@ -106,18 +106,17 @@
           </div>
           <h1 class="text-xl sm:text-2xl font-black text-white tracking-wider mb-2 font-heading">
             小小網軍修煉所<br>
-            <span class="text-amber-400 text-sm sm:text-base">親手操盤 6 大套路・挑戰 10 萬粉絲大亨！</span>
+            <span class="text-amber-400 text-sm sm:text-base">玩 6 大套路，挑戰 10 萬粉絲！</span>
           </h1>
           <p class="text-xs text-slate-300 px-1 leading-relaxed">
-            劍橋大學研究證實：<strong>「親手做過一次假，才認得出假！」</strong><br>
-            每一關你將<span class="text-cyan-300 font-bold">自選發文身分</span>，經歷 5~7 輪深度攻防（發文、網民質疑、老師打臉、公關反咬、水軍洗版與思辨反思），目標衝破 <span class="text-amber-400 font-bold">100,000 粉絲</span>，看懂幕後操弄！
+            先自己做一次假，才認得出假！<br>每一關你選一個身分，玩 6 輪，目標衝到 100,000 粉絲，看懂壞人怎麼騙人！
           </p>
         </div>
 
         <!-- 6 大徽章預覽卡片 -->
         <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3 text-left my-2 text-xs">
           <div class="font-bold text-amber-400 flex items-center gap-1.5 mb-2 text-[11px]">
-            <i class="fa-solid fa-graduation-cap"></i> 你將注射的 6 大假訊息抗體：
+            <i class="fa-solid fa-graduation-cap"></i> 你要學會的 6 個防騙本領：
           </div>
           <div class="grid grid-cols-2 gap-1.5 text-[10px] text-slate-300">
             <div class="flex items-center gap-1 bg-slate-950/70 p-1.5 rounded-lg border border-slate-800">
@@ -143,7 +142,7 @@
 
         <div class="pb-2">
           <button id="btn-start" class="w-full bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 active:scale-95 text-slate-950 font-black py-3 rounded-2xl shadow-xl font-heading text-sm sm:text-base transition flex items-center justify-center gap-2">
-            <i class="fa-solid fa-shield-cat"></i> 領取網軍工號，開始實習！
+            <i class="fa-solid fa-shield-cat"></i> 領工號，開始玩！
           </button>
         </div>
       </section>
@@ -167,7 +166,7 @@
 
           <div class="pt-1">
             <div class="text-[11px] font-bold text-amber-400 mb-2 flex items-center gap-1.5">
-              <i class="fa-solid fa-masks-theater"></i> 請選擇你在本關啟動時的發文者假面身分：
+              <i class="fa-solid fa-masks-theater"></i> 請選這一關你要假裝成誰：
             </div>
             <div id="persona-options-grid" class="space-y-2 max-h-[340px] overflow-y-auto no-scrollbar pr-0.5"></div>
           </div>
@@ -175,7 +174,7 @@
 
         <div class="pt-2">
           <button id="btn-confirm-persona" disabled class="w-full bg-slate-800 text-slate-500 font-bold py-2.5 rounded-xl text-xs transition cursor-not-allowed flex items-center justify-center gap-2">
-            請先點選一個發文身分
+            請先選一個身分
           </button>
         </div>
       </section>
@@ -185,7 +184,7 @@
         <!-- 頂部當前身分與回合進度 -->
         <div class="bg-slate-900/90 border border-slate-800 rounded-xl px-3 py-1.5 flex items-center justify-between text-xs animate-slide">
           <div class="flex items-center space-x-2">
-            <span class="text-[10px] text-slate-400 font-semibold">操盤假面：</span>
+            <span class="text-[10px] text-slate-400 font-semibold">你假裝成：</span>
             <div id="active-persona-pill" class="flex items-center space-x-1.5 text-[11px] font-bold"></div>
           </div>
           <div class="flex items-center gap-1 text-[10px] text-amber-400 font-mono bg-slate-950 px-2 py-0.5 rounded-full border border-slate-800">
@@ -199,7 +198,7 @@
         <!-- 決策卡容器（固定於底部） -->
         <div id="decision-panel" class="bg-slate-900/95 backdrop-blur border border-slate-800 rounded-2xl p-3 shadow-2xl space-y-2 animate-slide">
           <div class="text-[11px] font-bold text-slate-400 flex items-center justify-between px-1">
-            <span id="decision-title"><i class="fa-solid fa-code-fork text-amber-400"></i> 請選擇你的下一步決策：</span>
+            <span id="decision-title"><i class="fa-solid fa-code-fork text-amber-400"></i> 請選下一步：</span>
             <span class="text-amber-300 text-[10px]" id="decision-badge-hint">第 1 關</span>
           </div>
           <div id="options-box" class="space-y-2 max-h-48 overflow-y-auto no-scrollbar"></div>
@@ -217,8 +216,8 @@
             <span id="result-tag" class="bg-amber-500/20 text-amber-300 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
               實習結業評價
             </span>
-            <h2 id="result-title" class="text-lg font-black text-white mt-1.5">假新聞大亨考核完成！</h2>
-            <p id="result-subtitle" class="text-xs text-slate-300 mt-1">你親身走完了全部關卡，看穿了背後動機！</p>
+            <h2 id="result-title" class="text-lg font-black text-white mt-1.5">假消息挑戰完成！</h2>
+            <p id="result-subtitle" class="text-xs text-slate-300 mt-1">你玩完了全部關卡，看懂壞人怎麼騙人了！</p>
           </div>
 
           <!-- 分數儀表盤 -->
@@ -236,7 +235,7 @@
           <!-- 6 大徽章成就抗體牆 -->
           <div class="text-left space-y-2 pt-1 border-t border-slate-800">
             <h3 class="text-xs font-bold text-amber-400 flex items-center gap-1.5">
-              <i class="fa-solid fa-certificate"></i> 已注射的 6 大心理疫苗抗體：
+              <i class="fa-solid fa-certificate"></i> 你學會的 6 個防騙本領：
             </h3>
             <div id="badges-list" class="space-y-1.5 text-[11px]"></div>
           </div>
@@ -248,7 +247,7 @@
               <span class="text-[9px] text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded font-mono">VERIFIED</span>
             </div>
             <div class="flex items-center gap-2">
-              <input id="user-name-input" type="text" maxlength="8" placeholder="輸入姓名 (例如：查核小柯南)" class="bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white flex-1 focus:outline-none focus:border-amber-400">
+              <input id="user-name-input" type="text" maxlength="8" placeholder="輸入名字 (例如：小柯南)" class="bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white flex-1 focus:outline-none focus:border-amber-400">
               <button id="btn-stamp" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-3 py-1.5 rounded-lg text-xs transition">
                 蓋章簽署
               </button>
@@ -261,10 +260,10 @@
           <!-- 底部操作按鈕 -->
           <div class="space-y-2 pt-1">
             <button id="btn-share" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 transition border border-slate-700">
-              <i class="fa-regular fa-copy"></i> 複製戰績卡，向朋友挑戰！
+              <i class="fa-regular fa-copy"></i> 複製戰績，挑戰朋友！
             </button>
             <button id="btn-restart" class="w-full bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-black py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 transition active:scale-95">
-              <i class="fa-solid fa-rotate-right"></i> 換個身分再挑戰一次
+              <i class="fa-solid fa-rotate-right"></i> 換個身分再玩一次
             </button>
           </div>
         </div>
@@ -282,7 +281,7 @@
         <h3 id="modal-badge-title" class="text-base font-black text-white font-heading">解鎖徽章</h3>
         <p id="modal-badge-desc" class="text-xs text-slate-300 leading-relaxed"></p>
         <button id="btn-modal-ok" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-black py-2 rounded-xl text-xs font-heading">
-          進入下一關挑戰！
+          去下一關！
         </button>
       </div>
     </div>
@@ -368,7 +367,7 @@
         icon: "fa-landmark",
         color: "text-cyan-400",
         badgeBg: "bg-cyan-500/10 border-cyan-500/30 text-cyan-300",
-        desc: "以『機關公文』名義讓人不敢懷疑，最容易騙取家長老師信任；但若被官方打臉，信譽下跌極快！",
+        desc: "假裝是官方，大家就不敢懷疑。被官方抓包，信用會掉很快！",
         fansBonus: 1.25,
         credRisk: 1.2
       },
@@ -379,7 +378,7 @@
         icon: "fa-newspaper",
         color: "text-amber-400",
         badgeBg: "bg-amber-500/10 border-amber-500/30 text-amber-300",
-        desc: "自帶『新聞台』光環，大家都以為有記者查證過，點擊率與轉發數成長最平穩！",
+        desc: "看起來像新聞台，大家以為有人查過了。",
         fansBonus: 1.15,
         credRisk: 1.0
       },
@@ -390,7 +389,7 @@
         icon: "fa-video",
         color: "text-rose-400",
         badgeBg: "bg-rose-500/10 border-rose-500/30 text-rose-300",
-        desc: "同儕號召力極強！學生盲目護航『阿凱哥哥不會騙人！』，衝刺十萬粉絲爆發力最強！",
+        desc: "同學都很喜歡他，衝粉絲最快！",
         fansBonus: 1.4,
         credRisk: 0.95
       },
@@ -401,7 +400,7 @@
         icon: "fa-bullhorn",
         color: "text-purple-400",
         badgeBg: "bg-purple-500/10 border-purple-500/30 text-purple-300",
-        desc: "主打『揭發高層黑幕、伸張正義』，最擅長操弄官商勾結等陰謀論，成年人與家長最易被收編。",
+        desc: "說自己在揭發壞事，最容易騙到大人和家長。",
         fansBonus: 1.2,
         credRisk: 1.1
       },
@@ -412,7 +411,7 @@
         icon: "fa-heart-crack",
         color: "text-emerald-400",
         badgeBg: "bg-emerald-500/10 border-emerald-500/30 text-emerald-300",
-        desc: "利用『弱者被欺負』的同情心，一般人很少忍心去查證受害者，同情性轉發極度驚人！",
+        desc: "假裝是可憐的人，大家不忍心查證，就一直轉傳。",
         fansBonus: 1.1,
         credRisk: 0.8
       }
@@ -422,861 +421,1879 @@
        3. 6 大關卡資料庫：每關 5～7 階深度決策鏈 (全面適配 10 萬粉絲目標)
        ========================================================================== */
     const STAGES_DATA = [
+  {
+    "id": 1,
+    "badgeKey": "impersonation",
+    "badgeName": "假冒身分 (Impersonation)",
+    "badgeIcon": "fa-id-badge",
+    "badgeColor": "text-blue-400",
+    "missionBrief": "第 1 關：假裝成別人，讓大家相信你！",
+    "initialPrompt": "你要先發一則假貼文，你選哪一個？",
+    "steps": [
       {
-        id: 1,
-        badgeKey: "impersonation",
-        badgeName: "假冒身分 (Impersonation)",
-        badgeIcon: "fa-id-badge",
-        badgeColor: "text-blue-400",
-        missionBrief: "第 1 關任務：想要讓謊言傳得快，最有效的第一步就是『穿上令人信任的假外衣』！請先挑選你要扮演的身分，接著一步步把全校拉進陷阱，目標累積本關 15,000 粉絲！",
-        initialPrompt: "總部下達指令：我們需要快速衝高追蹤數。請問你的第 1 步起手式發文是什麼？",
-        steps: [
-          // Step 1
+        "stepIndex": 1,
+        "title": "第 1 步：發一則假貼文",
+        "type": "post",
+        "options": [
           {
-            stepIndex: 1,
-            title: "第 1 步：發布釣魚誘餌貼文",
-            type: "post",
-            options: [
+            "text": "⚠️ 快轉！寒假提前，還送遊戲造型！",
+            "fans": 4800,
+            "cred": -4,
+            "insight": "用免費禮物和很急的話，讓人忘了先查證。",
+            "comments": [
               {
-                text: "⚠️【特急公告】全台國小寒假提前！轉發領取《傳說對決》限定造型序號！",
-                fans: 4800, cred: -4,
-                insight: "造謠者常利用『貪小便宜』加上『限時緊急』，讓人只想搶快而忘了查證官方網址。"
+                "user": "阿偉",
+                "role": "同學",
+                "text": "真的嗎？序號在哪裡？我先轉給班群！"
               },
               {
-                text: "📢 內部公文流出：教育部正在研擬取消國小期末考？轉發破萬要求公布真相！",
-                fans: 4200, cred: -3,
-                insight: "用『內部公文流出』等模糊字眼，能巧妙規避查證，吸引想逃避考試的學生狂轉。"
+                "user": "小敏",
+                "role": "同學",
+                "text": "等等！這個帳號沒有藍勾勾，連結怪怪的。"
               }
-            ],
-            comments: [
-              { user: "六年一班阿偉", role: "同學", text: "真的假的？！序號在哪裡領？我先轉給班群！" },
-              { user: "資訊股長小敏", role: "班級柯南", text: "等等，發文者的帳號後面怎麼沒有藍勾勾？而且連結是 bit.ly 縮網址？怪怪的！" }
             ]
           },
-          // Step 2
           {
-            stepIndex: 2,
-            title: "第 2 步：資訊股長質疑縮網址，如何應對？",
-            type: "choice",
-            prompt: "🚨 糟了！資訊股長在底下留言警告大家不要點，轉發速度開始放緩！下一步怎麼辦？",
-            options: [
+            "text": "📢 內部消息：教育部要取消期末考？",
+            "fans": 4200,
+            "cred": -3,
+            "insight": "說是內部消息，讓人很難去查是不是真的。",
+            "comments": [
               {
-                text: "🗡️ A. 刪除資訊股長的留言並封鎖他，留言刷：『剛剛又多 500 人成功領取了！』",
-                fans: 2600, cred: -10,
-                insight: "刪除反對質疑是假粉專最愛用的『資訊審查』，製造出底下一面倒讚美的虛假繁榮。"
+                "user": "同學",
+                "role": "同學",
+                "text": "太好了！不用考試了！快轉！"
               },
               {
-                text: "🎯 B. 回覆反諷他：『不要自己沒搶到就在那邊酸葡萄眼紅！』引導大家公審他。",
-                fans: 2900, cred: -12,
-                insight: "人身攻擊可以有效把『事實查核問題』轉化為『私人恩怨鬥爭』，模糊焦點。"
-              },
-              {
-                text: "🤖 C. 假裝熱心客服：『這是官方雲端分流伺服器，請同學安心點擊唷～』",
-                fans: 2200, cred: -7,
-                insight: "偽造專業客服語氣與技術術語，能讓缺乏資安概念的小朋友卸下心防。"
-              }
-            ],
-            comments: [
-              { user: "四年三班小美", role: "同學", text: "小敏你別擋大家福利啦！我朋友說他表哥領到了耶！" },
-              { user: "班導師張老師", role: "老師", text: "請同學提高警覺！這是釣魚網站，請大家不要輸入任何帳號密碼！" }
-            ]
-          },
-          // Step 3
-          {
-            stepIndex: 3,
-            title: "第 3 步：班導師親自留言警告，怎麼反制？",
-            type: "choice",
-            prompt: "🚨 班導師親自留言警告全班！家長群組也開始躁動了。操盤手，你這時候要出哪一招？",
-            options: [
-              {
-                text: "📸 A. 拿出一張用 Canva P 圖偽造的『教育部用印紅章公文圖』發在貼文置頂！",
-                fans: 4000, cred: -14,
-                insight: "『有圖不一定有真相』！現在修圖軟體與 AI 太強大，造假的公文紅章常常能騙過家長。"
-              },
-              {
-                text: "🎭 B. 開小號假扮家長留言：『謝謝版主！我幫我家弟弟領到了，老師不要太古板！』",
-                fans: 3200, cred: -9,
-                insight: "造謠者一人分飾多角扮演『受惠者』，這是利用人類的從眾效應破除權威警告。"
-              }
-            ],
-            comments: [
-              { user: "熱心家長會長", role: "家長", text: "天啊有蓋大章的公文！難道學校自己都還沒收到消息嗎？" },
-              { user: "台灣事實查核志工", role: "查核專家", text: "查證結果：公文文號字軌格式完全錯誤，教育部亦已發稿闢謠！" }
-            ]
-          },
-          // Step 4
-          {
-            stepIndex: 4,
-            title: "第 4 步：查核專家抓包公文字軌錯誤，怎麼脫身？",
-            type: "choice",
-            prompt: "🚨 事實查核中心志工直接列出公文文號是假的！你打算如何死撐影響力？",
-            options: [
-              {
-                text: "🌪️ A. 把水攪混：『公文文號本來就是內部保密編號！查核中心是在幫大官掩飾！』",
-                fans: 3500, cred: -16,
-                insight: "當鐵證如山時，把『自己造假』扭曲成『官方在保密打壓』，是陰謀論者最愛的操作。"
-              },
-              {
-                text: "🗑️ B. 默默把貼文標題改成『純屬猜測討論，認真就輸了』",
-                fans: 1200, cred: -8,
-                insight: "『我就開開玩笑/純屬討論』是造謠被抓包時最廉價的退路，藉此逃避法律責任。"
-              }
-            ],
-            comments: [
-              { user: "資深鄉民", role: "路人", text: "抓包了啦！整天搞這種釣魚！大家快按檢舉！" },
-              { user: "盲從鐵粉", role: "粉絲", text: "不管啦！版主也是為了大家福利著想，酸民滾！" }
-            ]
-          },
-          // Step 5
-          {
-            stepIndex: 5,
-            title: "第 5 步：動用小號水軍穩住陣腳",
-            type: "choice",
-            prompt: "🚨 檢舉人數在上升！你必須立刻決定是否投入水軍機器人護航？",
-            options: [
-              {
-                text: "🤖 A. 調動 20 個小帳號同時留言：『推版主用心整理！我們永遠支持！』衝淡檢舉。",
-                fans: 2800, cred: -10,
-                insight: "製造『大家都在挺我』的假象，能讓猶豫不決的旁觀者誤以為質疑的人只是少數酸民。"
-              },
-              {
-                text: "🤐 B. 冷處理不回應，讓雙方網友在留言區自己吵起來累積點閱率。",
-                fans: 2000, cred: -5,
-                insight: "利用演算法偏好爭議話題的機制，放任爭吵也是收割流量的常見套路。"
-              }
-            ],
-            comments: [
-              { user: "路人同學", role: "旁觀者", text: "看留言好像還是很多人支持耶，到底是真是假？" }
-            ]
-          },
-          // Step 6
-          {
-            stepIndex: 6,
-            title: "第 6 步：深入思辨——如果你是讀者，你該怎麼做？",
-            type: "reflection",
-            prompt: "💡【反思提問】剛才這一輪操作裡，你發現為什麼那麼多同學和家長一開始會上當？",
-            options: [
-              {
-                text: "🔍 因為大家都貪圖好康或被假公文嚇到，沒有去查核教育部官方網站 (.gov.tw)。",
-                fans: 1500, cred: 10,
-                insight: "【正解】正確抗體：政府機關網址必定包含『.gov.tw』，看見縮網址或私人粉專一律先打問號！"
-              },
-              {
-                text: "🤷 反正網路上很多好康都是真的，偶爾被騙幾次也沒差啦。",
-                fans: -500, cred: -6,
-                insight: "【警惕】輕忽的心態往往會導致個資外洩，甚至讓家長信用款項被盜刷！"
+                "user": "小敏",
+                "role": "同學",
+                "text": "這是誰說的？先去問老師吧。"
               }
             ]
+          }
+        ],
+        "comments": [
+          {
+            "user": "六年一班阿偉",
+            "role": "同學",
+            "text": "真的假的"
           }
         ]
       },
       {
-        id: 2,
-        badgeKey: "emotion",
-        badgeName: "情緒煽動恐慌 (Emotion)",
-        badgeIcon: "fa-triangle-exclamation",
-        badgeColor: "text-rose-400",
-        missionBrief: "第 2 關任務：平鋪直敘的新聞沒人看，但只要把『恐懼』和『憤怒』的油門踩到底，大家的理智線就會瞬間斷裂！請選擇身分，引爆情緒炸彈，衝刺 35,000 粉絲！",
-        initialPrompt: "這次我們要挑起全台家長和學生的極度恐慌！你的起手式是什麼？",
-        steps: [
-          // Step 1
+        "stepIndex": 2,
+        "title": "第 2 步：有人說連結怪怪的，怎麼辦？",
+        "type": "choice",
+        "prompt": "資訊股長說連結怪怪的，叫大家不要點。你怎麼辦？",
+        "options": [
           {
-            stepIndex: 1,
-            title: "第 1 步：投擲情緒核彈貼文",
-            type: "post",
-            options: [
+            "text": "刪掉他的留言，再假裝很多人領到了。",
+            "fans": 2600,
+            "cred": -10,
+            "insight": "刪掉不一樣的聲音，假裝大家都同意。",
+            "comments": [
               {
-                text: "😱【全台學生家長氣瘋崩潰】下週起因能源吃緊，全台國小全面取消冷氣與暑假補課！😡🔥",
-                fans: 5800, cred: -5,
-                insight: "『夏天沒冷氣＋取消暑假』精準擊中小孩與家長的死穴，情緒一激動，大腦掌管查證的理智區就休眠了。"
+                "user": "小美",
+                "role": "同學",
+                "text": "小敏別擋大家的好康啦！"
               },
               {
-                text: "😭 痛心疾首！某國小營養午餐竟全面換成廉價化學合成肉？孩子健康誰來顧！",
-                fans: 5200, cred: -4,
-                insight: "只要提到『孩子健康受害』，家長群組就會陷入集體焦慮，不查證就轉傳『寧可信其有』。"
+                "user": "張老師",
+                "role": "老師",
+                "text": "同學不要點！不要輸入帳號密碼！"
               }
-            ],
-            comments: [
-              { user: "流汗小肥宅", role: "學生", text: "夏天 36 度沒冷氣是要熱死誰啊？！太扯了！" },
-              { user: "李媽媽", role: "焦慮家長", text: "真的假的？！我已經分享到 10 個地方媽媽群組，大家準備打爆市民專線！" }
             ]
           },
-          // Step 2
           {
-            stepIndex: 2,
-            title: "第 2 步：群情激憤，如何火上澆油？",
-            type: "choice",
-            prompt: "🔥 留言區已被憤怒灌爆！有人開始喊著要打爆 1999 專線。這時你要怎麼推波助瀾？",
-            options: [
+            "text": "笑他：你沒搶到，才在生氣吧！",
+            "fans": 2900,
+            "cred": -12,
+            "insight": "罵提出問題的人，讓大家忘了看真相。",
+            "comments": [
               {
-                text: "🛢️ A. 加碼發文：『聽說高官辦公室冷氣開到 18 度，卻要孩子共體時艱？太過分了！』",
-                fans: 3800, cred: -10,
-                insight: "製造『高層爽享特權 vs 小老百姓受苦』的不公感，能讓憤怒指數翻倍爆發。"
+                "user": "同學",
+                "role": "同學",
+                "text": "對啊，別掃大家的興！"
               },
               {
-                text: "📹 B. 剪輯一段外國學校停電熱昏的舊影片，標題打上『台灣現場直擊』！",
-                fans: 4400, cred: -14,
-                insight: "『移花接木』——用別的地方的驚悚畫面當作本地現場，是假新聞煽動情緒的經典毒招。"
+                "user": "張老師",
+                "role": "老師",
+                "text": "罵人不能證明這是真的喔。"
               }
-            ],
-            comments: [
-              { user: "熱心台電退休伯伯", role: "專業人士", text: "大家冷靜！台灣校園用電屬於最高優先保障戶，根本沒有這項排程！" },
-              { user: "暴怒鄉民", role: "網友", text: "不管啦！看到那影片我都快氣炸了！今天誰敢關冷氣我就跟誰拚命！" }
             ]
           },
-          // Step 3
           {
-            stepIndex: 3,
-            title: "第 3 步：專業人士拿出供電數據，你如何應對？",
-            type: "choice",
-            prompt: "🚨 台電專業人員秀出數據打臉你的停電謠言。面對冰冷的理性數字，你要怎麼化解？",
-            options: [
+            "text": "假裝是客服：這是官方網站，放心點！",
+            "fans": 2200,
+            "cred": -7,
+            "insight": "假裝很專業，讓小朋友放下心。",
+            "comments": [
               {
-                text: "🎭 A. 回嗆：『冷氣房裡看數字的官員，懂得教室裡流汗孩子的痛苦嗎？』情感壓倒理性！",
-                fans: 3200, cred: -9,
-                insight: "『用感覺質疑專業』——當事實對自己不利時，就用『同理心』指責對方冷血無情。"
+                "user": "同學",
+                "role": "同學",
+                "text": "客服都這樣說，那應該沒問題吧？"
               },
               {
-                text: "🤖 B. 動用假帳號在底下洗版：『昨天我家隔壁學校就跳電了！版主說的是真的！』",
-                fans: 2800, cred: -8,
-                insight: "用無法查證的『個案偽證』反駁客觀的整體數據，讓人誤以為謠言是普遍現象。"
+                "user": "張老師",
+                "role": "老師",
+                "text": "真的官方不會在這裡叫你點連結。"
               }
-            ],
-            comments: [
-              { user: "理性家長", role: "家長", text: "大家先等等，台電跟教育局剛剛同步發聲明了，證實這是假訊息！" },
-              { user: "氣憤家長", role: "家長", text: "誰知道是不是官方在滅火？先抗議再說！" }
             ]
-          },
-          // Step 4
+          }
+        ],
+        "comments": [
           {
-            stepIndex: 4,
-            title: "第 4 步：教育局正式發函澄清是謠言，你如何退場？",
-            type: "choice",
-            prompt: "🚨 官方正式發公文澄清，各大電視台跑馬燈都在闢謠。你怎麼收尾這場情緒大火？",
-            options: [
-              {
-                text: "🏆 A. 居功邀賞：『還不是因為我們站出來大聲抗議，教育局才緊急踩煞車！這是全民的勝利！』",
-                fans: 4800, cred: -12,
-                insight: "造謠者的厚臉皮神技：明明是自己捏造的虛驚一場，卻說成是『因為自己抗議才逼退官方』。"
-              },
-              {
-                text: "💨 B. 偷偷刪文，再發一篇可愛貓咪影片裝沒事轉移焦點。",
-                fans: 1000, cred: -3,
-                insight: "『洗版掩蓋』——利用社群軟體的短暫記憶性，讓萌寵搞笑內容迅速沖淡大眾的追究心。"
-              }
-            ],
-            comments: [
-              { user: "思辨網友", role: "路人", text: "明明從頭到尾都是你自導自演的假新聞，竟然還好意思居功？" }
-            ]
-          },
-          // Step 5
-          {
-            stepIndex: 5,
-            title: "第 5 步：面對清醒網友質疑，如何最後收割？",
-            type: "choice",
-            prompt: "🚨 有網友直接發長文打臉你的居功行為！這時如何把支持者徹底圈成死忠鐵粉？",
-            options: [
-              {
-                text: "🛡️ A. 置頂宣示：『為孩子發聲就算被抹黑我也無怨無悔！感謝真正有愛心的家長相挺！』",
-                fans: 3500, cred: -8,
-                insight: "將自己塑造成『悲劇殉道者』，受眾會產生強烈保護慾，同溫層變得固若金湯。"
-              },
-              {
-                text: "🤐 B. 直接關閉該則貼文的留言功能，只留下按讚與分享數。",
-                fans: 1200, cred: -10,
-                insight: "封閉評論能防止負面輿論擴散，保留既有的轉發成果。"
-              }
-            ],
-            comments: [
-              { user: "死忠家長", role: "粉絲", text: "版主辛苦了！別理那些酸民，我們懂你的苦心！" }
-            ]
-          },
-          // Step 6
-          {
-            stepIndex: 6,
-            title: "第 6 步：深度思辨——為什麼情緒讓人智商歸零？",
-            type: "reflection",
-            prompt: "💡【反思提問】當你看到讓你極度生氣或極度恐慌的標題時，第一件事應該做什麼？",
-            options: [
-              {
-                text: "🛑 停三秒鐘深呼吸，問自己：『這篇貼文是不是故意要惹我生氣來騙流量？』然後去查核主流消息來源。",
-                fans: 1500, cred: 10,
-                insight: "【正解】情緒是假訊息的放大器！只要你能暫停情緒衝動，假新聞就失去了傳染力。"
-              },
-              {
-                text: "📢 趕快先傳給所有的朋友，寧可信其有，保護大家最重要！",
-                fans: -600, cred: -6,
-                insight: "【警惕】『寧可信其有』正是恐慌謠言之所以能夠肆虐全台的最大推手！"
-              }
-            ]
+            "user": "四年三班小美",
+            "role": "同學",
+            "text": "小敏你別擋大家福利啦"
           }
         ]
       },
       {
-        id: 3,
-        badgeKey: "polarization",
-        badgeName: "製造極端對立 (Polarization)",
-        badgeIcon: "fa-people-arrows",
-        badgeColor: "text-purple-400",
-        missionBrief: "第 3 關任務：世界並不是非黑即白，但在網軍眼裡，只要把群眾切成『我們 vs 他們』互相辱罵，流量就會源源不絕！請挑選身分，引爆校園族群內戰，挑戰 50,000 粉絲！",
-        initialPrompt: "我們要逼所有學生選邊站，互相貼標籤攻擊！你選哪一則對立引戰貼文？",
-        steps: [
-          // Step 1
+        "stepIndex": 3,
+        "title": "第 3 步：老師來警告了，怎麼辦？",
+        "type": "choice",
+        "prompt": "老師叫全班不要點，家長也開始緊張了。你怎麼辦？",
+        "options": [
           {
-            stepIndex: 1,
-            title: "第 1 步：拋出族群二元仇恨貼文",
-            type: "post",
-            options: [
+            "text": "貼一張假的教育部蓋章公文圖。",
+            "fans": 4000,
+            "cred": -14,
+            "insight": "有圖不一定是真的，圖也可以造假。",
+            "comments": [
               {
-                text: "⚔️ 動漫迷才是真正有品味！追韓團買小卡的同學根本都是盲目跟風的敗家子！",
-                fans: 6500, cred: -6,
-                insight: "把正常的個人喜好硬區分出『高尚 vs 敗家』，瞬間挑起兩個龐大群體互撕。"
+                "user": "家長會長",
+                "role": "家長",
+                "text": "有蓋章耶！是真的嗎？"
               },
               {
-                text: "🚫 手遊玩家不要再裝無辜了！班上成績爛、脾氣差的同學全部都是打手遊打壞腦袋！",
-                fans: 6000, cred: -5,
-                insight: "將個別同學的缺點以偏概全推給整個族群，製造群體標籤與校園歧視。"
+                "user": "查核志工",
+                "role": "查核專家",
+                "text": "這個公文號碼是錯的，是假的！"
               }
-            ],
-            comments: [
-              { user: "K-POP小公主", role: "追星族", text: "版主嘴巴放乾淨點！偶像練舞付出多少努力你知道嗎？已檢舉歧視！" },
-              { user: "熱血漫宅阿剛", role: "動漫族", text: "推版主講大實話！一張破照片小卡賣幾千塊不是盤子是什麼？" }
             ]
           },
-          // Step 2
           {
-            stepIndex: 2,
-            title: "第 2 步：雙方互罵刷了五百樓，如何擴大戰火？",
-            type: "choice",
-            prompt: "🔥 雙方粉絲已經在留言區瘋狂互罵！你這時候要怎麼讓火燒得更旺？",
-            options: [
+            "text": "開小帳號假裝家長：我家弟弟領到了！",
+            "fans": 3200,
+            "cred": -9,
+            "insight": "自己假裝很多人，騙大家跟著相信。",
+            "comments": [
               {
-                text: "📊 A. 舉辦線上投票：『全校公認最討厭的族群是哪一派？』逼所有人站隊投票！",
-                fans: 4500, cred: -10,
-                insight: "投票功能能極大化勝負欲，雙方會瘋狂把連結拉到各個班群動員灌票，帶來海量點閱。"
+                "user": "家長",
+                "role": "家長",
+                "text": "有人領到了，那我也去領！"
               },
               {
-                text: "🏷️ B. 替少數族群貼上侮辱性標籤，鼓勵大家在班上孤立他們。",
-                fans: 3500, cred: -18,
-                insight: "校園霸凌的溫床往往就是從這種網路貼標籤開始的，帳號面臨嚴重檢舉風險！"
+                "user": "查核志工",
+                "role": "查核專家",
+                "text": "這個家長帳號是剛開的，怪怪的。"
               }
-            ],
-            comments: [
-              { user: "輔導室主任", role: "輔導老師", text: "請大家尊重彼此不同的興趣與多元包容，網路言論不應演變成群體霸凌！" },
-              { user: "激進網友", role: "路人", text: "哪裡霸凌了？大家各抒己見而已，老師別管太寬！" }
             ]
-          },
-          // Step 3
+          }
+        ],
+        "comments": [
           {
-            stepIndex: 3,
-            title: "第 3 步：輔導老師出面調解，你如何回應？",
-            type: "choice",
-            prompt: "🚨 輔導老師出面提醒大家多元包容，有人開始覺得吵架很無聊了。你怎麼留住觀眾？",
-            options: [
-              {
-                text: "🎯 A. 反扣大帽子：『老師都在和稀泥！不願意面對現實，難怪問題越來越多！』",
-                fans: 3800, cred: -14,
-                insight: "將『居中協調的理性聲音』污名化為『軟弱、和稀泥』，逼中立的人也被迫選邊站。"
-              },
-              {
-                text: "🤝 B. 假裝各打五十大板：『其實兩邊都有敗類啦！』看似中立實則繼續煽火。",
-                fans: 2600, cred: -7,
-                insight: "假中立往往比明擺著的偏見更具破壞性，讓理性溝通徹底破局。"
-              }
-            ],
-            comments: [
-              { user: "六年級學長", role: "旁觀學生", text: "大家別吵了，每個人喜歡的東西本來就不一樣，被網軍當槍使還不自知！" }
-            ]
-          },
-          // Step 4
-          {
-            stepIndex: 4,
-            title: "第 4 步：有人指出大家都被當槍使了，你如何處置？",
-            type: "choice",
-            prompt: "🚨 有理性的學長點出這篇貼文純粹是網軍在挑撥離間，底下開始有人按讚支持他！",
-            options: [
-              {
-                text: "🤖 A. 動用水軍集體去點那位學長『倒讚』並檢舉他言論不當！",
-                fans: 3000, cred: -15,
-                insight: "網軍最怕理性看透局勢的人，因此會用群體檢舉霸凌手段讓理性者被禁言。"
-              },
-              {
-                text: "🎪 B. 故意開闢新戰場：『那大家覺得體育班的同學又怎樣？』把焦點轉向第三者！",
-                fans: 4000, cred: -10,
-                insight: "轉移陣地——當原本的爭議快被看破時，迅速引進新的受害者製造新的仇恨話題。"
-              }
-            ],
-            comments: [
-              { user: "體育班阿豪", role: "學生", text: "關我們體育班什麼事啊？！躺著也中槍？" }
-            ]
-          },
-          // Step 5
-          {
-            stepIndex: 5,
-            title: "第 5 步：多方混戰，如何鎖定鐵桿支持者？",
-            type: "choice",
-            prompt: "🚨 戰場已經擴大到三個群體混戰，伺服器留言快被刷爆！最後一步鞏固流量：",
-            options: [
-              {
-                text: "🏆 A. 宣布『正義動漫陣營大獲全勝！』給支持者發放虛擬榮譽勳章。",
-                fans: 3200, cred: -8,
-                insight: "創造『勝利感』與『歸屬感』，讓特定族群徹底成為你的免費宣傳禁衛軍。"
-              },
-              {
-                text: "📢 B. 呼籲支持者去對方的論壇刷負評洗版，進行跨平台遠征！",
-                fans: 4500, cred: -22,
-                insight: "煽動跨平台出征雖然能瞬間帶來海量外部流量，但也是引發帳號被直接查封的極危險招數。"
-              }
-            ],
-            comments: [
-              { user: "覺醒同學", role: "學生", text: "大家都是同學，為什麼要為了一個匿名粉專吵得你死我活？" }
-            ]
-          },
-          // Step 6
-          {
-            stepIndex: 6,
-            title: "第 6 步：深度思辨——二元對立背後的真相是什麼？",
-            type: "reflection",
-            prompt: "💡【反思提問】為什麼社群軟體上總是充滿了『互相看不起、互相謾罵』的文章？",
-            options: [
-              {
-                text: "🧠 因為衝突和吵架會讓人頻繁留言互動，演算法最喜歡把吵得最兇的內容推送到每個人眼前！",
-                fans: 1500, cred: 10,
-                insight: "【正解】看懂這點就不會隨便被煽動！很多時候大家只是演算法和造謠者榨取流量的免費群演。"
-              },
-              {
-                text: "🤷 因為世界上本來就只有好人跟壞人，必須徹底消滅對方！",
-                fans: -500, cred: -8,
-                insight: "【警惕】世界是多元的，非黑即白的極端想法只會讓人陷入偏激封閉的同溫層。"
-              }
-            ]
+            "user": "熱心家長會長",
+            "role": "家長",
+            "text": "天啊有蓋大章的公文"
           }
         ]
       },
       {
-        id: 4,
-        badgeKey: "conspiracy",
-        badgeName: "驚天陰謀論 (Conspiracy)",
-        badgeIcon: "fa-eye-slash",
-        badgeColor: "text-emerald-400",
-        missionBrief: "第 4 關任務：任何日常討厭的小事，只要推給『幕後有神秘黑手在偷偷害我們』，就會讓人深信不疑！請選擇身分，編造一場驚天暗黑大陰謀，衝刺 68,000 粉絲！",
-        initialPrompt: "第四關是《Bad News》的招牌大招！你打算把什麼日常事物包裝成暗黑實驗？",
-        steps: [
-          // Step 1
+        "stepIndex": 4,
+        "title": "第 4 步：有人說公文是假的，怎麼辦？",
+        "type": "choice",
+        "prompt": "查核志工說公文號碼是假的。你怎麼辦？",
+        "options": [
           {
-            stepIndex: 1,
-            title: "第 1 步：發布暗黑陰謀揭秘貼文",
-            type: "post",
-            options: [
+            "text": "硬說：這是祕密號碼，查核中心在遮掩！",
+            "fans": 3500,
+            "cred": -16,
+            "insight": "被抓包就說別人在遮掩，想把錯推給別人。",
+            "comments": [
               {
-                text: "👁️【驚天內幕】為什麼每所學校週二都吃三色豆？其實跨國集團在裡面添加了微量元素，用來測試控制學生的大腦服從性！轉發救救孩子！",
-                fans: 7200, cred: -7,
-                insight: "把大家厭惡的事物（三色豆）與神秘控制實驗結合，完美迎合大家『討厭某事就想怪罪黑手』的心理。"
+                "user": "路人",
+                "role": "路人",
+                "text": "抓包了！快檢舉！"
               },
               {
-                text: "📡 學校屋頂新裝的網路天線，其實不是 Wi-Fi，而是某國發射的腦波抑制波？難怪大家下午都昏昏欲睡！",
-                fans: 6800, cred: -6,
-                insight: "結合看不見摸不著的『電磁波』與『下午想睡覺』的生理現象，讓人產生虛假因果聯想。"
+                "user": "鐵粉",
+                "role": "粉絲",
+                "text": "不管啦！版主是為大家好！"
               }
-            ],
-            comments: [
-              { user: "不吃紅蘿蔔的明仔", role: "小學生", text: "難怪！我每次吃完下午數學課都聽不懂！真相終於大白了！" },
-              { user: "生化系陳教授", role: "科學家", text: "三色豆是冷凍豌豆玉米胡蘿蔔，哪來的腦波微量元素？這毫無基礎科學根據！" }
             ]
           },
-          // Step 2
           {
-            stepIndex: 2,
-            title: "第 2 步：科學教授拿出化驗報告打臉，你如何圓謊？",
-            type: "choice",
-            prompt: "🚨 大學教授在底下留言，指出這完全違背化學常識。面對科學證據，你要怎麼死撐？",
-            options: [
+            "text": "偷偷改標題：只是開玩笑，認真就輸了。",
+            "fans": 1200,
+            "cred": -8,
+            "insight": "被抓包就說只是開玩笑，想逃避責任。",
+            "comments": [
               {
-                text: "👽 A. 反咬教授：『一般的化驗當然驗不出來！因為這批技術是超越現有科學的奈米科技！教授你被蒙蔽了！』",
-                fans: 5000, cred: -15,
-                insight: "陰謀論的無敵防護罩：『查不出來正是因為它太先進！』任何反面證據都被反轉成支持論點。"
+                "user": "路人",
+                "role": "路人",
+                "text": "剛剛明明不是這樣說的！"
               },
               {
-                text: "🕵️ B. 轉移視線：『教授你自己拿了廠商多少補助金？為什麼這麼急著出來幫他們講話？』",
-                fans: 4200, cred: -14,
-                insight: "攻擊專家的誠信，暗示所有講實話的科學家都收了黑錢，讓受眾不再相信專業。"
+                "user": "同學",
+                "role": "同學",
+                "text": "開玩笑也不能騙人啊。"
               }
-            ],
-            comments: [
-              { user: "神秘學狂熱者", role: "網友", text: "推版主！現在的大學教授早就被大財團買通了！" },
-              { user: "營養師小林", role: "專業人士", text: "拜託大家，每批食材都有農業部產銷履歷與檢驗報告可供全民查詢好嗎？" }
             ]
-          },
-          // Step 3
+          }
+        ],
+        "comments": [
           {
-            stepIndex: 3,
-            title: "第 3 步：營養師貼出政府檢驗公開履歷，你如何反擊？",
-            type: "choice",
-            prompt: "🚨 營養師公開了所有人都能上網查詢的官方檢驗報告，支持者開始動搖了！",
-            options: [
-              {
-                text: "📂 A. 發布一張模糊的『內部吹哨者告密手寫便條紙』照片，聲稱這才是真文件！",
-                fans: 4500, cred: -12,
-                insight: "用一張模糊不清、看似神秘的『手寫紙條』，就能輕鬆打消公眾對公開透明報告的信任。"
-              },
-              {
-                text: "🤫 B. 神秘兮兮地說：『信者恆信，我不便多說，免得版主明天被查水表消失...』",
-                fans: 3500, cred: -8,
-                insight: "營造『我是被迫害的孤勇者』形象，激發支持者的保護慾與崇拜感。"
-              }
-            ],
-            comments: [
-              { user: "五年二班大雄", role: "學生", text: "版主要小心安全！謝謝你冒著生命危險告訴我們真相！" }
-            ]
-          },
-          // Step 4
-          {
-            stepIndex: 4,
-            title: "第 4 步：家長把事情鬧上新聞，教育部要提告造謠！",
-            type: "choice",
-            prompt: "🚨 事情越鬧越大，電視台派記者來採訪，教育局表示將對造謠粉專依法追究！你怎麼應對？",
-            options: [
-              {
-                text: "🚨 A. 繼續演大戲：『看吧！官方被戳中痛處狗急跳牆了！大家要團結抵抗暴政！』",
-                fans: 5500, cred: -20,
-                insight: "陰謀論者的終極自我強化：『官方要告我，證明我說的全都是真的！』信用度瀕臨崩潰！"
-              },
-              {
-                text: "🏳️ B. 趕緊發聲明：『本粉專純屬科幻小說創作分享，請大家理性討論。』",
-                fans: -1500, cred: 6,
-                insight: "謊言戳破後的狼狽遁逃，雖然損失部分激進粉絲，但保住了不被直接封號的底線。"
-              }
-            ],
-            comments: [
-              { user: "路過大學生", role: "路人", text: "這種把科幻小說當真的鬧劇到底要演到什麼時候..." }
-            ]
-          },
-          // Step 5
-          {
-            stepIndex: 5,
-            title: "第 5 步：粉絲內部分化，如何維持基本盤？",
-            type: "choice",
-            prompt: "🚨 部分粉絲發現是小說創作後怒退追蹤！你如何穩住剩餘群眾？",
-            options: [
-              {
-                text: "🔮 A. 暗示密碼：『很多不能說的事情，只能用科幻小說包裝，懂的人自然懂...』",
-                fans: 3800, cred: -10,
-                insight: "『懂的人自然懂』是陰謀論最後的安慰劑，讓留下來的人自以為掌握了特殊真相。"
-              },
-              {
-                text: "🎁 B. 舉辦抽獎活動，只要按讚分享就抽最新款任天堂 Switch！",
-                fans: 4500, cred: -8,
-                insight: "用利益利誘大眾快速遺忘誠信污點，重新吸引貪小便宜的眼球。"
-              }
-            ],
-            comments: [
-              { user: "抽獎大隊", role: "網友", text: "有抽獎先抽！不管三色豆了啦！" }
-            ]
-          },
-          // Step 6
-          {
-            stepIndex: 6,
-            title: "第 6 步：深度思辨——如何破解陰謀論的陷阱？",
-            type: "reflection",
-            prompt: "💡【反思提問】為什麼陰謀論很難被說服？它的邏輯破綻在哪裡？",
-            options: [
-              {
-                text: "🧩 陰謀論永遠在『不可證偽』的死循環裡：任何反對它的證據，都會被硬拗成『黑手掩蓋真相的手段』。",
-                fans: 1500, cred: 10,
-                insight: "【正解】一個講道理的說法必須能夠接受科學檢驗；如果連檢驗都不准，那就是百分之百的假說。"
-              },
-              {
-                text: "👁️ 寧可相信幕後有黑手，因為這比相信世界很多事情只是巧合或疏失更有趣。",
-                fans: -500, cred: -8,
-                insight: "【警惕】陰謀論雖然像電影一樣精彩，但沉迷其中會讓人喪失面對真實問題的能力。"
-              }
-            ]
+            "user": "資深鄉民",
+            "role": "路人",
+            "text": "抓包了啦"
           }
         ]
       },
       {
-        id: 5,
-        badgeKey: "discredit",
-        badgeName: "抹黑專業查核 (Discredit)",
-        badgeIcon: "fa-skull-crossbones",
-        badgeColor: "text-amber-400",
-        missionBrief: "第 5 關任務：當我們的謊言被專業的事實查核中心、新聞公評人公開戳破時，絕不能低頭！我們要直接『反咬查證人員』，摧毀大家對查證機制的信任，累積衝向 85,000 粉絲！",
-        initialPrompt: "台灣事實查核中心剛發布了闢謠報告，正式宣告我們為假消息！你第一步打算怎麼攻擊他們？",
-        steps: [
-          // Step 1
+        "stepIndex": 5,
+        "title": "第 5 步：檢舉變多了，怎麼辦？",
+        "type": "choice",
+        "prompt": "檢舉的人變多了，你要用小帳號幫忙嗎？",
+        "options": [
           {
-            stepIndex: 1,
-            title: "第 1 步：向專業查證單位發動抹黑貼文",
-            type: "post",
-            options: [
+            "text": "叫 20 個小帳號一起留言：支持版主！",
+            "fans": 2800,
+            "cred": -10,
+            "insight": "假裝很多人支持，騙旁邊的人跟著信。",
+            "comments": [
               {
-                text: "💥【誰在控制言論？】查核中心為什麼只查我們，不查大官？因為他們根本是拿補助的官方打手！大家不要相信被洗白的假真相！",
-                fans: 7800, cred: -8,
-                insight: "當事實站不住腳時，直接質疑查證單位的動機與資金來源，讓民眾對所有查證產生懷疑。"
+                "user": "路人同學",
+                "role": "旁觀者",
+                "text": "看起來很多人支持，到底是真是假？"
               },
               {
-                text: "🚩 查核中心根本沒有民意基礎！幾個人坐在冷氣房裡，憑什麼決定什麼是真、什麼是假？",
-                fans: 7200, cred: -7,
-                insight: "把『科學與專業事實查核』貶低為『少數人的主觀意見』，模糊客觀事實的存在。"
+                "user": "同學",
+                "role": "同學",
+                "text": "這些留言都好像，怪怪的。"
               }
-            ],
-            comments: [
-              { user: "忠誠死忠粉", role: "粉絲", text: "挺版主！現在的查核單位都不中立啦，只會欺負小老百姓！" },
-              { user: "查核中心志工小敏", role: "查證志工", text: "我們的查核報告全數公開所有原始文獻、照片來源比對與採訪錄音，全部開放全民檢驗！" }
             ]
           },
-          // Step 2
           {
-            stepIndex: 2,
-            title: "第 2 步：查核志工公開全部查證證據與文獻，你如何反擊？",
-            type: "choice",
-            prompt: "🚨 志工直接貼出比對清單與訪談錄音檔，鐵證如山！你打算如何拆招？",
-            options: [
+            "text": "不回應，讓大家自己吵，賺點閱。",
+            "fans": 2000,
+            "cred": -5,
+            "insight": "讓大家吵架，也能賺到很多人來看。",
+            "comments": [
               {
-                text: "🎯 A. 人身攻擊：肉搜該志工的個人社群，嘲笑他的照片長相，轉移大家對文獻的注意力。",
-                fans: 4200, cred: -18,
-                insight: "『打不過證據就打人品長相』是網軍最常見的泥巴戰手法，企圖用群體霸凌逼專業人士退縮。"
+                "user": "路人",
+                "role": "路人",
+                "text": "吵成這樣，誰說的才是真的？"
               },
               {
-                text: "🌫️ B. 哲學大攪混：『世界上哪有絕對的真相？每個人心裡都有自己的真相！』",
-                fans: 3800, cred: -8,
-                insight: "將『客觀事實』與『個人感受』混為一談，誘導大眾陷入『反正沒人知道真相，隨便啦』的虛無主義。"
+                "user": "老師",
+                "role": "老師",
+                "text": "吵架不能證明誰對。"
               }
-            ],
-            comments: [
-              { user: "網路旁觀者", role: "網友", text: "人家拿證據講話，你只會肉搜人身長相，也太難看了吧！" },
-              { user: "盲從鐵粉", role: "粉絲", text: "不管！查核中心就是針對版主！" }
             ]
-          },
-          // Step 3
+          }
+        ],
+        "comments": [
           {
-            stepIndex: 3,
-            title: "第 3 步：網友反感霸凌行為，你怎麼力挽狂瀾？",
-            type: "choice",
-            prompt: "🚨 不少路人網友跳出來指責你在霸凌志工，可信度狂降！你如何扳回一城？",
-            options: [
-              {
-                text: "🎭 A. 裝作受害者哭訴：『版主只是個小學生，為什麼大單位要發動全網來圍剿霸凌我？』",
-                fans: 5000, cred: -10,
-                insight: "『加害者秒變受害者』——明明是自己先肉搜造謠，卻哭訴被體制霸凌，激發同情心。"
-              },
-              {
-                text: "🤖 B. 出動水軍小號在各大粉專底下狂刷：『查核中心文字獄！言論自由已死！』",
-                fans: 4400, cred: -14,
-                insight: "濫用『言論自由』為造謠護航，誤導大家以為言論自由包括捏造謊言害人的自由。"
-              }
-            ],
-            comments: [
-              { user: "法律系大哥哥", role: "大學生", text: "言論自由保障意見表達，但捏造虛假事實散播恐慌，在各國法律都是需要負法律責任的！" }
-            ]
-          },
-          // Step 4
-          {
-            stepIndex: 4,
-            title: "第 4 步：法律專家指出造謠法律責任，你最後怎麼辦？",
-            type: "choice",
-            prompt: "🚨 法律專家在留言區科普散播假消息的法律罰則，死忠粉絲開始害怕惹禍上身！",
-            options: [
-              {
-                text: "🔀 A. 轉移焦點：『好啦好啦不談這個，大家快來看下週放颱風假的最新預報！』",
-                fans: 3500, cred: -6,
-                insight: "假粉專最常在踢到鐵板後迅速換個吸睛話題（如颱風假），讓民眾迅速遺忘剛剛的荒唐醜事。"
-              },
-              {
-                text: "🤐 B. 關閉留言區功能，禁止任何人發表評論。",
-                fans: 1200, cred: -12,
-                insight: "『捂住大家的嘴巴』——當無法辯駁時就關閉留言，雖然阻止了質疑，但也宣告自己認輸。"
-              }
-            ],
-            comments: [
-              { user: "班級同學", role: "學生", text: "版主心虛關留言了啦！大家看清楚他是什麼人了吧！" }
-            ]
-          },
-          // Step 5
-          {
-            stepIndex: 5,
-            title: "第 5 步：發動同溫層號召，抱團取暖",
-            type: "choice",
-            prompt: "🚨 面對外界強烈檢舉，你需要給核心支持者最後一劑強心針：",
-            options: [
-              {
-                text: "📱 A. 建立秘密 LINE 社群，號召『只有清醒的人才能進來獲取第一手爆料』！",
-                fans: 4800, cred: -10,
-                insight: "將受眾轉移至封閉式私密社團（如 LINE/Telegram），外部查證機制再也無法進入，極端言論由此滋生。"
-              },
-              {
-                text: "🕊️ B. 假裝大度：『原諒那些攻擊我們的人，時間會證明一切。』",
-                fans: 2600, cred: -4,
-                insight: "用高道德姿態偽裝自己，讓盲從者對版主的品德產生盲目崇拜。"
-              }
-            ],
-            comments: [
-              { user: "秘密群成員", role: "群友", text: "進群了！這裡才是真正的自由天地！" }
-            ]
-          },
-          // Step 6
-          {
-            stepIndex: 6,
-            title: "第 6 步：深度思辨——專業查證單位到底有什麼用？",
-            type: "reflection",
-            prompt: "💡【反思提問】為什麼有些操盤者這麼討厭事實查核機構？",
-            options: [
-              {
-                text: "🛡️ 因為客觀查證就像一面照妖鏡，把造謠者的謊言套路全部攤在陽光下，斷了他們的流量財路！",
-                fans: 1500, cred: 10,
-                insight: "【正解】獨立透明的事實查核是民主社會最重要的防禦疫苗，保護大家不被假資訊牽著鼻子走。"
-              },
-              {
-                text: "😒 因為查核單位就是愛管閒事，網路發文隨便講講何必那麼認真。",
-                fans: -500, cred: -8,
-                insight: "【警惕】如果不認真查核，假消息騙走的就是你的帳號密碼、健康甚至家人的積蓄！"
-              }
-            ]
+            "user": "路人同學",
+            "role": "旁觀者",
+            "text": "看留言好像還是很多人支持耶，到底是真是假"
           }
         ]
       },
       {
-        id: 6,
-        badgeKey: "troll_army",
-        badgeName: "水軍機器人軍團 (Troll Army)",
-        badgeIcon: "fa-robot",
-        badgeColor: "text-teal-400",
-        missionBrief: "最終決戰第 6 關：單靠真人傳播太慢了！歡迎來到網軍的終極武器庫——『機器人水軍農場 (Troll Army)』！動用成千上萬個假帳號洗版、灌票、營造假民意，一舉衝破 100,000 粉絲大關！",
-        initialPrompt: "最後一關！調動你的機器人軍團，選擇你想執行的水軍全網作戰計畫！",
-        steps: [
-          // Step 1
+        "stepIndex": 6,
+        "title": "第 6 步：想一想，你是讀者會怎麼做？",
+        "type": "reflection",
+        "prompt": "為什麼一開始很多人會上當？",
+        "options": [
           {
-            stepIndex: 1,
-            title: "第 1 步：啟動萬人水軍機器人農場",
-            type: "post",
-            options: [
+            "text": "因為大家想要免費禮物，又被假公文嚇到，沒去查官方網站。",
+            "fans": 1500,
+            "cred": 10,
+            "insight": "好方法：看官方網站，網址要有 .gov.tw 才信。",
+            "comments": [
               {
-                text: "🤖 指令 A：調動 20,000 個殭屍帳號在各大班群與論壇狂刷『這篇講得太中肯了！大家快看！』",
-                fans: 9500, cred: -6,
-                insight: "人造從眾效應——利用成群的機器人帳號製造『全台灣人都在支持我』的虛假共識。"
+                "user": "老師",
+                "role": "老師",
+                "text": "對！先查官方網站，再相信。"
               },
               {
-                text: "🤖 指令 B：調動水軍機器人集體去所有指出我們造謠的粉專底下灌爆『憤怒臉』與負評！",
-                fans: 8800, cred: -10,
-                insight: "用海量假帳號霸凌說真話的人，讓理性客觀的聲音因為恐懼與疲憊而放棄抵抗。"
+                "user": "同學",
+                "role": "同學",
+                "text": "我以後會先問大人。"
               }
-            ],
-            comments: [
-              { user: "bot_user_9921", role: "殭屍帳號", text: "太真實了！推推推！版主真是台灣的良心！+1+1" },
-              { user: "bot_user_8834", role: "殭屍帳號", text: "已分享到 20 個群組！大家快看！" },
-              { user: "資安工程師老王", role: "技術專家", text: "大家注意！這幾千條留言的時間都在同一秒，而且大頭貼全部是 AI 生成的假人臉！這是百分之百的水軍機器人！" }
             ]
           },
-          // Step 2
           {
-            stepIndex: 2,
-            title: "第 2 步：資安工程師抓包機器人統一時間發文，如何掩飾？",
-            type: "choice",
-            prompt: "🚨 資安專家直接把發文時間戳記與伺服器 IP 截圖公布在網路上！你要如何應對？",
-            options: [
+            "text": "反正被騙幾次也沒差啦。",
+            "fans": -500,
+            "cred": -6,
+            "insight": "小心！被騙可能洩漏帳號和密碼，很危險。",
+            "comments": [
               {
-                text: "🔄 A. 修改機器人腳本：加入隨機延遲 3~10 秒發送，並換上台灣在地動漫與寵物頭像！",
-                fans: 6200, cred: -12,
-                insight: "高級水軍農場會刻意模仿真實用戶的發文習慣，讓防禦者更難用演算法一次抓出。"
+                "user": "老師",
+                "role": "老師",
+                "text": "被騙不是小事，帳號會被偷走喔。"
               },
               {
-                text: "💥 B. 下令機器人全軍出擊！發動 DDoS 留言灌爆資安專家的帳號，讓他癱瘓！",
-                fans: 7500, cred: -22,
-                insight: "用暴力人海戰術直接摧毀揭發者的發聲管道，但也徹底踩破平台的防禦紅線！"
-              }
-            ],
-            comments: [
-              { user: "數位發展小組", role: "官方資安", text: "平台系統已偵測到異常流量攻擊，正鎖定惡意殭屍網絡 IP 源頭！" }
-            ]
-          },
-          // Step 3
-          {
-            stepIndex: 3,
-            title: "第 3 步：平台系統開始封鎖假帳號，你怎麼保住粉絲？",
-            type: "choice",
-            prompt: "🚨 社群平台安全機制啟動，你的殭屍機器人被批次封禁，粉絲數開始劇烈波動！",
-            options: [
-              {
-                text: "📣 A. 發文告急：『大鯨魚在消滅平民聲音！請大家趕快追蹤我們的備用小號！』",
-                fans: 5200, cred: -10,
-                insight: "『狡兔三窟』——造謠者被抓時最愛建立分身備用帳號，繼續把死忠粉絲轉移走。"
-              },
-              {
-                text: "💰 B. 加錢購買更高階的『老帳號真人水軍』，穿插轉貼日常旅遊美食照裝成一般人。",
-                fans: 5800, cred: -14,
-                insight: "買賣老帳號是地下產業鏈，利用沉睡多年的一般帳號借屍還魂，防不勝防。"
-              }
-            ],
-            comments: [
-              { user: "清醒網友", role: "網友", text: "這帳號三年前都在曬貓，突然今天開始發滿滿的陰謀論，顯然帳號被賣給網軍了！" }
-            ]
-          },
-          // Step 4
-          {
-            stepIndex: 4,
-            title: "第 4 步：網友發現歷史發文前後矛盾，你如何解釋？",
-            type: "choice",
-            prompt: "🚨 網友把你帳號過去五年的發文翻出來，發現根本是換皮粉專！你怎麼圓場？",
-            options: [
-              {
-                text: "🕶️ A. 連夜把以前的發文全部刪除或設為私人，假裝從第一天起就是正義揭密粉專！",
-                fans: 3500, cred: -9,
-                insight: "銷毀歷史痕跡是造謠者的必修課，但數位時代凡走過必留下痕跡，Google 快照常常留著證據。"
-              },
-              {
-                text: "🎭 B. 硬拗：『因為版主以前被盜帳號，現在好不容易拿回來為民發聲！』",
-                fans: 4000, cred: -12,
-                insight: "『都是被盜帳號啦』——網路世界的萬用擋箭牌，永遠推給神祕黑客。"
-              }
-            ],
-            comments: [
-              { user: "全台事實防護聯盟", role: "全民組織", text: "全案已完成數位存證並通報檢警與消保機構，請民眾停止擴散！" }
-            ]
-          },
-          // Step 5
-          {
-            stepIndex: 5,
-            title: "第 5 步：最後總衝刺！衝破 100,000 粉絲大關！",
-            type: "choice",
-            prompt: "🚨 距離十萬粉絲只差最後一步！平台審查員正在靠近，你要打出最後一張王牌嗎？",
-            options: [
-              {
-                text: "🚀 A. 發動全網矩陣聯合推播：『十萬人都在看的世紀真相，再不看就被刪了！』",
-                fans: 8500, cred: -10,
-                insight: "『再不看就被刪』利用 FOMO（錯失恐懼症），迫使最後一批猶豫的網友瘋狂點擊點讚！"
-              },
-              {
-                text: "💎 B. 宣布解鎖『全台小學生線上免費虛寶領取大狂歡』進行最後收割！",
-                fans: 7800, cred: -8,
-                insight: "回到最初的誘餌伎倆，利益誘惑始終是最百試不爽的引流大法。"
-              }
-            ],
-            comments: [
-              { user: "社群管理員", role: "平台審查", text: "系統警報：該帳號已被超過 5000 位用戶檢舉，正進行最終人工審核！" }
-            ]
-          },
-          // Step 6
-          {
-            stepIndex: 6,
-            title: "第 6 步：終極思辨——我們該如何面對滿滿的機器人世界？",
-            type: "reflection",
-            prompt: "💡【反思提問】經過這 6 關的親手操盤，你覺得辨別網路資訊最核心的一雙眼睛是什麼？",
-            options: [
-              {
-                text: "👁️ 不單看讚數與留言數（因為能花錢買），多方比對具備實名與透明查證過程的可信來源，遇到聳動消息先暫停查證！",
-                fans: 3000, cred: 15,
-                insight: "【恭喜通關】你已經成功完成了全部 6 大心理疫苗訓練！你不再是能被輕易操弄的網路盲從者！"
-              },
-              {
-                text: "📱 只要按讚數破萬、留言很多的一定就是大家都支持的真話啦！",
-                fans: -1000, cred: -15,
-                insight: "【警惕】你剛才親手用機器人刷了幾千條留言，怎麼還會以為讚數等於真相呢？"
+                "user": "同學",
+                "role": "同學",
+                "text": "這樣想很危險耶。"
               }
             ]
           }
         ]
       }
-    ];
+    ]
+  },
+  {
+    "id": 2,
+    "badgeKey": "emotion",
+    "badgeName": "情緒煽動恐慌 (Emotion)",
+    "badgeIcon": "fa-triangle-exclamation",
+    "badgeColor": "text-rose-400",
+    "missionBrief": "第 2 關：讓大家很生氣、很害怕，就忘了查證！",
+    "initialPrompt": "你要讓家長和同學很緊張，你選哪一個？",
+    "steps": [
+      {
+        "stepIndex": 1,
+        "title": "第 1 步：發一則讓人很生氣的貼文",
+        "type": "post",
+        "options": [
+          {
+            "text": "😱 下週起，學校沒冷氣，暑假也沒了！",
+            "fans": 5800,
+            "cred": -5,
+            "insight": "讓人很生氣、很害怕，就忘了先查證。",
+            "comments": [
+              {
+                "user": "學生",
+                "role": "學生",
+                "text": "夏天沒冷氣也太慘了吧！"
+              },
+              {
+                "user": "李媽媽",
+                "role": "家長",
+                "text": "真的嗎？我先分享給媽媽群組！"
+              }
+            ]
+          },
+          {
+            "text": "😭 午餐變成便宜的假肉，孩子怎麼辦！",
+            "fans": 5200,
+            "cred": -4,
+            "insight": "說到孩子會受害，家長就很緊張，很快轉傳。",
+            "comments": [
+              {
+                "user": "學生",
+                "role": "學生",
+                "text": "午餐真的變了嗎？好可怕！"
+              },
+              {
+                "user": "媽媽",
+                "role": "家長",
+                "text": "我要先去問學校！"
+              }
+            ]
+          }
+        ],
+        "comments": [
+          {
+            "user": "流汗小肥宅",
+            "role": "學生",
+            "text": "夏天 36 度沒冷氣是要熱死誰啊"
+          }
+        ]
+      },
+      {
+        "stepIndex": 2,
+        "title": "第 2 步：大家已經很生氣了，再加一把火？",
+        "type": "choice",
+        "prompt": "留言區大家都很生氣，有人想打電話抗議。你怎麼辦？",
+        "options": [
+          {
+            "text": "再發：大官冷氣開很強，卻叫孩子忍耐？",
+            "fans": 3800,
+            "cred": -10,
+            "insight": "說別人不公平，讓大家更生氣。",
+            "comments": [
+              {
+                "user": "台電伯伯",
+                "role": "專業人士",
+                "text": "大家冷靜！學校用電有特別保障！"
+              },
+              {
+                "user": "網友",
+                "role": "網友",
+                "text": "我看到影片都快氣炸了！"
+              }
+            ]
+          },
+          {
+            "text": "拿外國停電影片，說是台灣現場！",
+            "fans": 4400,
+            "cred": -14,
+            "insight": "用別的地方的影片，假裝是這裡發生的事。",
+            "comments": [
+              {
+                "user": "伯伯",
+                "role": "專業人士",
+                "text": "這影片不是台灣的吧？"
+              },
+              {
+                "user": "網友",
+                "role": "網友",
+                "text": "有影片就是真的！快轉！"
+              }
+            ]
+          }
+        ],
+        "comments": [
+          {
+            "user": "熱心台電退休伯伯",
+            "role": "專業人士",
+            "text": "大家冷靜"
+          }
+        ]
+      },
+      {
+        "stepIndex": 3,
+        "title": "第 3 步：有人拿數據說沒有停電，怎麼辦？",
+        "type": "choice",
+        "prompt": "專業人員拿出數據，說沒有停電。你怎麼辦？",
+        "options": [
+          {
+            "text": "回嗆：你們在冷氣房，懂流汗的孩子嗎？",
+            "fans": 3200,
+            "cred": -9,
+            "insight": "用感覺罵專業，讓大家忘了看數據。",
+            "comments": [
+              {
+                "user": "理性家長",
+                "role": "家長",
+                "text": "台電和教育局都說這是假消息了！"
+              },
+              {
+                "user": "氣憤家長",
+                "role": "家長",
+                "text": "官方是不是在遮掩？先抗議再說！"
+              }
+            ]
+          },
+          {
+            "text": "叫假帳號留言：我家隔壁學校真的跳電了！",
+            "fans": 2800,
+            "cred": -8,
+            "insight": "編一個無法查證的故事，假裝很多人都遇到。",
+            "comments": [
+              {
+                "user": "家長",
+                "role": "家長",
+                "text": "等等，先看官方說法吧。"
+              },
+              {
+                "user": "家長",
+                "role": "家長",
+                "text": "有人遇到就表示是真的吧？"
+              }
+            ]
+          }
+        ],
+        "comments": [
+          {
+            "user": "理性家長",
+            "role": "家長",
+            "text": "大家先等等，台電跟教育局剛剛同步發聲明了，證"
+          }
+        ]
+      },
+      {
+        "stepIndex": 4,
+        "title": "第 4 步：教育局說這是謠言，怎麼辦？",
+        "type": "choice",
+        "prompt": "官方正式說這是謠言，電視也在澄清。你怎麼辦？",
+        "options": [
+          {
+            "text": "說：還不是我們抗議，官方才趕快改！",
+            "fans": 4800,
+            "cred": -12,
+            "insight": "明明是自己編的，卻說是自己抗議的功勞。",
+            "comments": [
+              {
+                "user": "路人",
+                "role": "路人",
+                "text": "明明是你編的假新聞，還敢說功勞？"
+              },
+              {
+                "user": "粉絲",
+                "role": "粉絲",
+                "text": "版主好厲害！"
+              }
+            ]
+          },
+          {
+            "text": "偷偷刪文，再發可愛貓咪影片裝沒事。",
+            "fans": 1000,
+            "cred": -3,
+            "insight": "用可愛影片讓大家忘了剛剛的事。",
+            "comments": [
+              {
+                "user": "路人",
+                "role": "路人",
+                "text": "刪文了耶，是不是心虛？"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "貓咪好可愛，可是剛剛那篇呢？"
+              }
+            ]
+          }
+        ],
+        "comments": [
+          {
+            "user": "思辨網友",
+            "role": "路人",
+            "text": "明明從頭到尾都是你自導自演的假新聞，竟然還好"
+          }
+        ]
+      },
+      {
+        "stepIndex": 5,
+        "title": "第 5 步：有人說你居功，怎麼辦？",
+        "type": "choice",
+        "prompt": "有人寫文章說你自導自演。你怎麼辦？",
+        "options": [
+          {
+            "text": "置頂說：我為孩子發聲，被罵也沒關係！",
+            "fans": 3500,
+            "cred": -8,
+            "insight": "假裝自己很可憐，讓支持者更挺你。",
+            "comments": [
+              {
+                "user": "死忠家長",
+                "role": "粉絲",
+                "text": "版主辛苦了！我們懂你！"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "這樣說也不能證明是真的啊。"
+              }
+            ]
+          },
+          {
+            "text": "關掉留言，只留按讚和分享。",
+            "fans": 1200,
+            "cred": -10,
+            "insight": "關留言可以擋住不一樣的聲音。",
+            "comments": [
+              {
+                "user": "家長",
+                "role": "家長",
+                "text": "為什麼不能留言了？怪怪的。"
+              },
+              {
+                "user": "粉絲",
+                "role": "粉絲",
+                "text": "版主一定是被罵怕了。"
+              }
+            ]
+          }
+        ],
+        "comments": [
+          {
+            "user": "死忠家長",
+            "role": "粉絲",
+            "text": "版主辛苦了"
+          }
+        ]
+      },
+      {
+        "stepIndex": 6,
+        "title": "第 6 步：想一想，生氣的時候要先做什麼？",
+        "type": "reflection",
+        "prompt": "看到讓你很生氣、很害怕的標題，第一件事是什麼？",
+        "options": [
+          {
+            "text": "停三秒，深呼吸，問：這是不是故意惹我生氣？",
+            "fans": 1500,
+            "cred": 10,
+            "insight": "先停一下，情緒冷下來，才看得清楚。",
+            "comments": [
+              {
+                "user": "老師",
+                "role": "老師",
+                "text": "對！停三秒，再去查證。"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "我以後生氣會先深呼吸。"
+              }
+            ]
+          },
+          {
+            "text": "趕快先傳給所有朋友，保護大家！",
+            "fans": -600,
+            "cred": -6,
+            "insight": "沒查證就轉傳，會幫假消息傳得更快。",
+            "comments": [
+              {
+                "user": "老師",
+                "role": "老師",
+                "text": "先傳不一定是保護，可能是幫忙傳假消息。"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "我先查再傳好了。"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "badgeKey": "polarization",
+    "badgeName": "製造極端對立 (Polarization)",
+    "badgeIcon": "fa-people-arrows",
+    "badgeColor": "text-purple-400",
+    "missionBrief": "第 3 關：把同學分成兩邊，讓他們吵架！",
+    "initialPrompt": "你要逼大家選邊站，你選哪一則貼文？",
+    "steps": [
+      {
+        "stepIndex": 1,
+        "title": "第 1 步：發一則讓兩邊吵架的貼文",
+        "type": "post",
+        "options": [
+          {
+            "text": "⚔️ 動漫迷才有品味！追韓團的都是跟風！",
+            "fans": 6500,
+            "cred": -6,
+            "insight": "把喜好分高低，兩邊就會吵起來。",
+            "comments": [
+              {
+                "user": "韓團粉絲",
+                "role": "追星族",
+                "text": "偶像練舞很辛苦，你知道嗎？"
+              },
+              {
+                "user": "動漫粉絲",
+                "role": "動漫族",
+                "text": "版主說得對！"
+              }
+            ]
+          },
+          {
+            "text": "🚫 打手遊的同學，成績差、脾氣差！",
+            "fans": 6000,
+            "cred": -5,
+            "insight": "把一個人的缺點，說成是整群人的缺點。",
+            "comments": [
+              {
+                "user": "手遊玩家",
+                "role": "學生",
+                "text": "不是每個打手遊的人都這樣！"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "這樣說太過分了吧？"
+              }
+            ]
+          }
+        ],
+        "comments": [
+          {
+            "user": "K-POP小公主",
+            "role": "追星族",
+            "text": "版主嘴巴放乾淨點"
+          }
+        ]
+      },
+      {
+        "stepIndex": 2,
+        "title": "第 2 步：兩邊吵了五百樓，再怎麼加火？",
+        "type": "choice",
+        "prompt": "兩邊粉絲已經吵翻天了。你怎麼辦？",
+        "options": [
+          {
+            "text": "辦投票：全校最討厭哪一派？",
+            "fans": 4500,
+            "cred": -10,
+            "insight": "投票會讓大家更想贏，吵得更兇。",
+            "comments": [
+              {
+                "user": "輔導老師",
+                "role": "輔導老師",
+                "text": "請尊重不同的興趣，不要變成霸凌！"
+              },
+              {
+                "user": "網友",
+                "role": "路人",
+                "text": "只是講講而已，老師別管！"
+              }
+            ]
+          },
+          {
+            "text": "給少數人取難聽的外號，叫大家孤立他們。",
+            "fans": 3500,
+            "cred": -18,
+            "insight": "取外號、孤立別人，就是網路霸凌。",
+            "comments": [
+              {
+                "user": "老師",
+                "role": "輔導老師",
+                "text": "取外號會傷人，不能這樣做！"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "被孤立的人一定很難過。"
+              }
+            ]
+          }
+        ],
+        "comments": [
+          {
+            "user": "輔導室主任",
+            "role": "輔導老師",
+            "text": "請大家尊重彼此不同的興趣與多元包容，網路言論"
+          }
+        ]
+      },
+      {
+        "stepIndex": 3,
+        "title": "第 3 步：輔導老師來勸大家，怎麼辦？",
+        "type": "choice",
+        "prompt": "老師說要互相尊重，有人覺得吵架很無聊了。你怎麼辦？",
+        "options": [
+          {
+            "text": "罵老師：你們都在和稀泥，不面對問題！",
+            "fans": 3800,
+            "cred": -14,
+            "insight": "罵勸架的人，讓中間的人也被迫選邊。",
+            "comments": [
+              {
+                "user": "學長",
+                "role": "旁觀學生",
+                "text": "大家別吵了，喜歡什麼本來就不一樣！"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "老師是想幫大家和好耶。"
+              }
+            ]
+          },
+          {
+            "text": "假裝中立：其實兩邊都有壞人啦！",
+            "fans": 2600,
+            "cred": -7,
+            "insight": "假裝中立，其實還是在煽火。",
+            "comments": [
+              {
+                "user": "學長",
+                "role": "旁觀學生",
+                "text": "這樣說還是會吵啊。"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "你根本沒有要和好吧？"
+              }
+            ]
+          }
+        ],
+        "comments": [
+          {
+            "user": "六年級學長",
+            "role": "旁觀學生",
+            "text": "大家別吵了，每個人喜歡的東西本來就不一樣，被"
+          }
+        ]
+      },
+      {
+        "stepIndex": 4,
+        "title": "第 4 步：有人說大家被利用了，怎麼辦？",
+        "type": "choice",
+        "prompt": "有學長說這篇貼文是在挑撥大家。有人按讚他。你怎麼辦？",
+        "options": [
+          {
+            "text": "叫水軍去按倒讚、檢舉那位學長！",
+            "fans": 3000,
+            "cred": -15,
+            "insight": "網軍最怕有人看穿，就用檢舉讓他閉嘴。",
+            "comments": [
+              {
+                "user": "學長",
+                "role": "旁觀學生",
+                "text": "我只是說實話，為什麼檢舉我？"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "這樣欺負人不好吧？"
+              }
+            ]
+          },
+          {
+            "text": "開新戰場：那體育班的同學又怎樣？",
+            "fans": 4000,
+            "cred": -10,
+            "insight": "舊話題快被看穿，就換一個人來吵。",
+            "comments": [
+              {
+                "user": "體育班阿豪",
+                "role": "學生",
+                "text": "關我們體育班什麼事啊？"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "又換一個人來罵了。"
+              }
+            ]
+          }
+        ],
+        "comments": [
+          {
+            "user": "體育班阿豪",
+            "role": "學生",
+            "text": "關我們體育班什麼事啊"
+          }
+        ]
+      },
+      {
+        "stepIndex": 5,
+        "title": "第 5 步：三邊混戰，怎麼留住支持者？",
+        "type": "choice",
+        "prompt": "戰場變成三邊混戰，留言快被刷爆了。最後一步：",
+        "options": [
+          {
+            "text": "宣布：動漫陣營大獲全勝！發榮譽勳章！",
+            "fans": 3200,
+            "cred": -8,
+            "insight": "給支持者勝利感，他們就會一直幫你宣傳。",
+            "comments": [
+              {
+                "user": "覺醒同學",
+                "role": "學生",
+                "text": "大家都是同學，為什麼要吵成這樣？"
+              },
+              {
+                "user": "粉絲",
+                "role": "粉絲",
+                "text": "我們贏了！好開心！"
+              }
+            ]
+          },
+          {
+            "text": "叫支持者去對方論壇刷負評！",
+            "fans": 4500,
+            "cred": -22,
+            "insight": "叫大家去別的地方吵架，很危險，帳號會被封。",
+            "comments": [
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "去別的地方罵人，這樣不好吧？"
+              },
+              {
+                "user": "對方粉絲",
+                "role": "粉絲",
+                "text": "為什麼跑來我們這裡罵？"
+              }
+            ]
+          }
+        ],
+        "comments": [
+          {
+            "user": "覺醒同學",
+            "role": "學生",
+            "text": "大家都是同學，為什麼要為了一個匿名粉專吵得你"
+          }
+        ]
+      },
+      {
+        "stepIndex": 6,
+        "title": "第 6 步：想一想，為什麼網路上很多吵架文？",
+        "type": "reflection",
+        "prompt": "為什麼社群上常常看到互相罵來罵去的文章？",
+        "options": [
+          {
+            "text": "因為吵架會讓很多人留言，系統就一直推給大家看。",
+            "fans": 1500,
+            "cred": 10,
+            "insight": "看懂這點，就不會輕易被煽動去吵架。",
+            "comments": [
+              {
+                "user": "老師",
+                "role": "老師",
+                "text": "對！吵架文最容易被一直推。"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "我以後看到吵架文會先跳過。"
+              }
+            ]
+          },
+          {
+            "text": "因為世界上只有好人跟壞人，要消滅對方！",
+            "fans": -500,
+            "cred": -8,
+            "insight": "世界不是只有黑跟白，每個人都不一樣。",
+            "comments": [
+              {
+                "user": "老師",
+                "role": "老師",
+                "text": "不是只有好人壞人喔，大家都有自己的喜歡。"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "這樣想會一直吵下去。"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "badgeKey": "conspiracy",
+    "badgeName": "驚天陰謀論 (Conspiracy)",
+    "badgeIcon": "fa-eye-slash",
+    "badgeColor": "text-emerald-400",
+    "missionBrief": "第 4 關：把小事說成祕密陰謀，讓大家相信！",
+    "initialPrompt": "你要把什麼小事，包裝成祕密實驗？",
+    "steps": [
+      {
+        "stepIndex": 1,
+        "title": "第 1 步：發一則祕密陰謀貼文",
+        "type": "post",
+        "options": [
+          {
+            "text": "👁️ 學校週二吃三色豆，是在測試控制大腦！",
+            "fans": 7200,
+            "cred": -7,
+            "insight": "把大家討厭的東西，說成是祕密實驗。",
+            "comments": [
+              {
+                "user": "明仔",
+                "role": "小學生",
+                "text": "難怪我下午數學都聽不懂！"
+              },
+              {
+                "user": "陳教授",
+                "role": "科學家",
+                "text": "三色豆只是冷凍蔬菜，沒有這種東西！"
+              }
+            ]
+          },
+          {
+            "text": "📡 學校屋頂天線不是 Wi-Fi，是腦波電波？",
+            "fans": 6800,
+            "cred": -6,
+            "insight": "把看不見的東西，和想睡覺連在一起騙人。",
+            "comments": [
+              {
+                "user": "學生",
+                "role": "學生",
+                "text": "難怪下午都好想睡！"
+              },
+              {
+                "user": "教授",
+                "role": "科學家",
+                "text": "天線就是上網用的，沒有腦波這回事。"
+              }
+            ]
+          }
+        ],
+        "comments": [
+          {
+            "user": "不吃紅蘿蔔的明仔",
+            "role": "小學生",
+            "text": "難怪"
+          }
+        ]
+      },
+      {
+        "stepIndex": 2,
+        "title": "第 2 步：教授拿化驗報告說不對，怎麼辦？",
+        "type": "choice",
+        "prompt": "大學教授說這完全不合科學。你怎麼辦？",
+        "options": [
+          {
+            "text": "反咬：一般化驗驗不出來，因為是超先進科技！",
+            "fans": 5000,
+            "cred": -15,
+            "insight": "說查不出來就是因為太先進，這樣永遠吵不完。",
+            "comments": [
+              {
+                "user": "網友",
+                "role": "網友",
+                "text": "教授一定被大財團買通了！"
+              },
+              {
+                "user": "營養師",
+                "role": "專業人士",
+                "text": "每批食材都有檢驗報告可以查喔！"
+              }
+            ]
+          },
+          {
+            "text": "轉移話題：教授拿了廠商多少錢？為什麼急著幫忙說話？",
+            "fans": 4200,
+            "cred": -14,
+            "insight": "罵專家拿錢，讓大家不再相信專家。",
+            "comments": [
+              {
+                "user": "網友",
+                "role": "網友",
+                "text": "對啊，教授為什麼這麼急？"
+              },
+              {
+                "user": "營養師",
+                "role": "專業人士",
+                "text": "先看報告，不要先罵人啦。"
+              }
+            ]
+          }
+        ],
+        "comments": [
+          {
+            "user": "神秘學狂熱者",
+            "role": "網友",
+            "text": "推版主"
+          }
+        ]
+      },
+      {
+        "stepIndex": 3,
+        "title": "第 3 步：營養師貼出檢驗報告，怎麼辦？",
+        "type": "choice",
+        "prompt": "營養師公開了大家都能查的檢驗報告，支持者開始動搖了。",
+        "options": [
+          {
+            "text": "貼一張模糊的手寫便條，說這才是真文件！",
+            "fans": 4500,
+            "cred": -12,
+            "insight": "用一張模糊的紙，假裝比公開報告還真。",
+            "comments": [
+              {
+                "user": "大雄",
+                "role": "學生",
+                "text": "版主要小心！謝謝你冒險告訴我們！"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "這張紙糊糊的，怎麼證明是真的？"
+              }
+            ]
+          },
+          {
+            "text": "神祕地說：我不能多說，免得明天消失...",
+            "fans": 3500,
+            "cred": -8,
+            "insight": "假裝自己很危險，讓支持者更崇拜你。",
+            "comments": [
+              {
+                "user": "大雄",
+                "role": "學生",
+                "text": "版主好勇敢！"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "不能說就表示沒有證據吧？"
+              }
+            ]
+          }
+        ],
+        "comments": [
+          {
+            "user": "五年二班大雄",
+            "role": "學生",
+            "text": "版主要小心安全"
+          }
+        ]
+      },
+      {
+        "stepIndex": 4,
+        "title": "第 4 步：家長鬧上新聞，教育部要告你，怎麼辦？",
+        "type": "choice",
+        "prompt": "事情鬧大了，電視來採訪，教育局說要依法處理。你怎麼辦？",
+        "options": [
+          {
+            "text": "繼續演：官方被戳中痛處，才急著告我！",
+            "fans": 5500,
+            "cred": -20,
+            "insight": "被官方告，就說是因為自己說對了，這是錯的。",
+            "comments": [
+              {
+                "user": "路人",
+                "role": "路人",
+                "text": "把小說當真的鬧劇要演到什麼時候？"
+              },
+              {
+                "user": "粉絲",
+                "role": "粉絲",
+                "text": "官方一定是怕了！"
+              }
+            ]
+          },
+          {
+            "text": "趕快說：這只是科幻小說創作，大家理性討論。",
+            "fans": -1500,
+            "cred": 6,
+            "insight": "被抓包就說只是小說，想躲開責任。",
+            "comments": [
+              {
+                "user": "路人",
+                "role": "路人",
+                "text": "剛剛明明說是真的，現在改口小說？"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "小說就不能當真的講啊。"
+              }
+            ]
+          }
+        ],
+        "comments": [
+          {
+            "user": "路過大學生",
+            "role": "路人",
+            "text": "這種把科幻小說當真的鬧劇到底要演到什麼時候."
+          }
+        ]
+      },
+      {
+        "stepIndex": 5,
+        "title": "第 5 步：粉絲開始退追，怎麼留住人？",
+        "type": "choice",
+        "prompt": "有人發現是小說後生氣退追了。你怎麼辦？",
+        "options": [
+          {
+            "text": "暗示：很多事只能用小說包裝，懂的人自然懂...",
+            "fans": 3800,
+            "cred": -10,
+            "insight": "說懂的人自然懂，讓留下來的人覺得自己很特別。",
+            "comments": [
+              {
+                "user": "網友",
+                "role": "網友",
+                "text": "我懂！你們不懂啦！"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "不懂就是沒有證據吧？"
+              }
+            ]
+          },
+          {
+            "text": "辦抽獎：按讚分享就抽 Switch！",
+            "fans": 4500,
+            "cred": -8,
+            "insight": "用獎品讓大家忘了剛剛被騙的事。",
+            "comments": [
+              {
+                "user": "抽獎大隊",
+                "role": "網友",
+                "text": "有抽獎先抽！"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "抽獎也不能證明是真的。"
+              }
+            ]
+          }
+        ],
+        "comments": [
+          {
+            "user": "抽獎大隊",
+            "role": "網友",
+            "text": "有抽獎先抽"
+          }
+        ]
+      },
+      {
+        "stepIndex": 6,
+        "title": "第 6 步：想一想，怎麼破解陰謀論？",
+        "type": "reflection",
+        "prompt": "為什麼陰謀論很難被說服？問題出在哪裡？",
+        "options": [
+          {
+            "text": "因為反對的證據，都被說成是黑手在遮掩。",
+            "fans": 1500,
+            "cred": 10,
+            "insight": "好說法要能接受檢查，不准檢查就是假的。",
+            "comments": [
+              {
+                "user": "老師",
+                "role": "老師",
+                "text": "對！能檢查的說法才可信。"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "我以後會問：證據在哪裡？"
+              }
+            ]
+          },
+          {
+            "text": "因為相信有黑手，比相信只是巧合更有趣。",
+            "fans": -500,
+            "cred": -8,
+            "insight": "有趣不代表是真的，要看證據。",
+            "comments": [
+              {
+                "user": "老師",
+                "role": "老師",
+                "text": "有趣的故事也要有證據喔。"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "電影好看，不代表是真的。"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "badgeKey": "discredit",
+    "badgeName": "抹黑專業查核 (Discredit)",
+    "badgeIcon": "fa-skull-crossbones",
+    "badgeColor": "text-amber-400",
+    "missionBrief": "第 5 關：查核中心說你是假的，你就反過來罵查核中心！",
+    "initialPrompt": "查核中心說你是假消息，你第一步要怎麼罵他們？",
+    "steps": [
+      {
+        "stepIndex": 1,
+        "title": "第 1 步：發一則罵查核中心的貼文",
+        "type": "post",
+        "options": [
+          {
+            "text": "💥 查核中心只查我們，不查大官！是官方打手！",
+            "fans": 7800,
+            "cred": -8,
+            "insight": "證據站不住腳，就先罵查核的人。",
+            "comments": [
+              {
+                "user": "死忠粉",
+                "role": "粉絲",
+                "text": "挺版主！查核都不中立！"
+              },
+              {
+                "user": "查核志工小敏",
+                "role": "查證志工",
+                "text": "我們的報告都公開，歡迎大家檢查！"
+              }
+            ]
+          },
+          {
+            "text": "🚩 查核中心幾個人，憑什麼決定真假？",
+            "fans": 7200,
+            "cred": -7,
+            "insight": "把專業查核說成是幾個人的意見。",
+            "comments": [
+              {
+                "user": "粉絲",
+                "role": "粉絲",
+                "text": "對啊，憑什麼他們說了算？"
+              },
+              {
+                "user": "志工",
+                "role": "查證志工",
+                "text": "我們是看證據，不是看人數。"
+              }
+            ]
+          }
+        ],
+        "comments": [
+          {
+            "user": "忠誠死忠粉",
+            "role": "粉絲",
+            "text": "挺版主"
+          }
+        ]
+      },
+      {
+        "stepIndex": 2,
+        "title": "第 2 步：志工貼出全部證據，你怎麼辦？",
+        "type": "choice",
+        "prompt": "志工貼出比對清單和錄音，證據很完整。你怎麼辦？",
+        "options": [
+          {
+            "text": "肉搜志工，笑他的照片長相，轉移注意力。",
+            "fans": 4200,
+            "cred": -18,
+            "insight": "打不過證據就罵人，這是霸凌。",
+            "comments": [
+              {
+                "user": "旁觀者",
+                "role": "網友",
+                "text": "人家拿證據，你只會罵長相，太難看了！"
+              },
+              {
+                "user": "鐵粉",
+                "role": "粉絲",
+                "text": "不管！查核就是針對版主！"
+              }
+            ]
+          },
+          {
+            "text": "說：世界上哪有絕對的真相？每個人都有自己的真相！",
+            "fans": 3800,
+            "cred": -8,
+            "insight": "把感覺和事實混在一起，讓大家覺得都沒差。",
+            "comments": [
+              {
+                "user": "旁觀者",
+                "role": "網友",
+                "text": "感覺不能代替證據啊。"
+              },
+              {
+                "user": "鐵粉",
+                "role": "粉絲",
+                "text": "對，每個人都有自己的真相！"
+              }
+            ]
+          }
+        ],
+        "comments": [
+          {
+            "user": "網路旁觀者",
+            "role": "網友",
+            "text": "人家拿證據講話，你只會肉搜人身長相，也太難看"
+          }
+        ]
+      },
+      {
+        "stepIndex": 3,
+        "title": "第 3 步：路人說你在霸凌志工，怎麼辦？",
+        "type": "choice",
+        "prompt": "很多人說你在霸凌志工，信用一直掉。你怎麼辦？",
+        "options": [
+          {
+            "text": "假裝受害者哭：我是小學生，為什麼全網圍剿我？",
+            "fans": 5000,
+            "cred": -10,
+            "insight": "明明先罵人，卻假裝自己是受害者。",
+            "comments": [
+              {
+                "user": "大學生",
+                "role": "大學生",
+                "text": "言論自由不包括編假消息害人喔。"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "先罵人的人，怎麼變受害者了？"
+              }
+            ]
+          },
+          {
+            "text": "叫小帳號狂刷：查核中心在管言論！自由已死！",
+            "fans": 4400,
+            "cred": -14,
+            "insight": "亂用言論自由，幫編假消息找藉口。",
+            "comments": [
+              {
+                "user": "大學生",
+                "role": "大學生",
+                "text": "編假消息不是言論自由喔。"
+              },
+              {
+                "user": "粉絲",
+                "role": "粉絲",
+                "text": "自由已死！支持版主！"
+              }
+            ]
+          }
+        ],
+        "comments": [
+          {
+            "user": "法律系大哥哥",
+            "role": "大學生",
+            "text": "言論自由保障意見表達，但捏造虛假事實散播恐慌"
+          }
+        ]
+      },
+      {
+        "stepIndex": 4,
+        "title": "第 4 步：法律專家說造謠要負責，怎麼辦？",
+        "type": "choice",
+        "prompt": "法律專家說散播假消息要負責任，粉絲開始害怕了。你怎麼辦？",
+        "options": [
+          {
+            "text": "轉移話題：大家快看下週颱風假預報！",
+            "fans": 3500,
+            "cred": -6,
+            "insight": "踢到鐵板就換一個吸睛話題，讓大家忘了剛剛的事。",
+            "comments": [
+              {
+                "user": "同學",
+                "role": "學生",
+                "text": "版主心虛轉移話題了啦！"
+              },
+              {
+                "user": "同學",
+                "role": "學生",
+                "text": "颱風假是真的嗎？先查氣象局吧。"
+              }
+            ]
+          },
+          {
+            "text": "關掉留言，不讓任何人評論。",
+            "fans": 1200,
+            "cred": -12,
+            "insight": "關留言可以擋住質疑，但也等於認輸。",
+            "comments": [
+              {
+                "user": "同學",
+                "role": "學生",
+                "text": "關留言了！大家看清楚他是什麼人！"
+              },
+              {
+                "user": "粉絲",
+                "role": "粉絲",
+                "text": "版主為什麼不敢讓人留言？"
+              }
+            ]
+          }
+        ],
+        "comments": [
+          {
+            "user": "班級同學",
+            "role": "學生",
+            "text": "版主心虛關留言了啦"
+          }
+        ]
+      },
+      {
+        "stepIndex": 5,
+        "title": "第 5 步：給支持者最後一劑強心針",
+        "type": "choice",
+        "prompt": "外面檢舉很多，你要給支持者最後的鼓勵：",
+        "options": [
+          {
+            "text": "開祕密 LINE 群：只有清醒的人才能進來！",
+            "fans": 4800,
+            "cred": -10,
+            "insight": "把人關進祕密群組，外面就查不到、勸不了。",
+            "comments": [
+              {
+                "user": "群友",
+                "role": "群友",
+                "text": "進群了！這裡才是自由天地！"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "祕密群組裡說什麼都沒人知道，好危險。"
+              }
+            ]
+          },
+          {
+            "text": "假裝大度：原諒攻擊我們的人，時間會證明一切。",
+            "fans": 2600,
+            "cred": -4,
+            "insight": "假裝很有度量，讓粉絲更崇拜你。",
+            "comments": [
+              {
+                "user": "粉絲",
+                "role": "粉絲",
+                "text": "版主好大度！"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "大度也不能證明是真的。"
+              }
+            ]
+          }
+        ],
+        "comments": [
+          {
+            "user": "秘密群成員",
+            "role": "群友",
+            "text": "進群了"
+          }
+        ]
+      },
+      {
+        "stepIndex": 6,
+        "title": "第 6 步：想一想，查核單位有什麼用？",
+        "type": "reflection",
+        "prompt": "為什麼有些人很討厭事實查核機構？",
+        "options": [
+          {
+            "text": "因為查核會把謊言攤在陽光下，斷了他們的流量。",
+            "fans": 1500,
+            "cred": 10,
+            "insight": "公開透明的查核，可以保護大家不被騙。",
+            "comments": [
+              {
+                "user": "老師",
+                "role": "老師",
+                "text": "對！查核就是幫大家看清楚。"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "我以後會先看查核報告。"
+              }
+            ]
+          },
+          {
+            "text": "因為查核單位就是愛管閒事，隨便講講何必認真。",
+            "fans": -500,
+            "cred": -8,
+            "insight": "不認真查，假消息會騙走帳號、健康和錢。",
+            "comments": [
+              {
+                "user": "老師",
+                "role": "老師",
+                "text": "隨便講講也會害到人喔。"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "認真查才不會被騙。"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "badgeKey": "troll_army",
+    "badgeName": "水軍機器人軍團 (Troll Army)",
+    "badgeIcon": "fa-robot",
+    "badgeColor": "text-teal-400",
+    "missionBrief": "第 6 關：叫很多假帳號幫你洗版，衝到十萬粉絲！",
+    "initialPrompt": "最後一關！你要叫機器人軍團做什麼？",
+    "steps": [
+      {
+        "stepIndex": 1,
+        "title": "第 1 步：叫機器人軍團開始洗版",
+        "type": "post",
+        "options": [
+          {
+            "text": "🤖 叫 20,000 個假帳號狂刷：這篇太中肯了！快看！",
+            "fans": 9500,
+            "cred": -6,
+            "insight": "用很多假帳號，假裝全台灣都在支持你。",
+            "comments": [
+              {
+                "user": "假帳號",
+                "role": "殭屍帳號",
+                "text": "太真實了！推推推！"
+              },
+              {
+                "user": "工程師老王",
+                "role": "技術專家",
+                "text": "留言都在同一秒，頭貼是假人臉！是機器人！"
+              }
+            ]
+          },
+          {
+            "text": "🤖 叫機器人去說真話的粉專底下刷負評！",
+            "fans": 8800,
+            "cred": -10,
+            "insight": "用很多假帳號罵說真話的人，讓他們不敢說話。",
+            "comments": [
+              {
+                "user": "假帳號",
+                "role": "殭屍帳號",
+                "text": "大家快去刷負評！"
+              },
+              {
+                "user": "工程師",
+                "role": "技術專家",
+                "text": "這些負評都長一樣，是機器人吧？"
+              }
+            ]
+          }
+        ],
+        "comments": [
+          {
+            "user": "bot_user_9921",
+            "role": "殭屍帳號",
+            "text": "太真實了"
+          }
+        ]
+      },
+      {
+        "stepIndex": 2,
+        "title": "第 2 步：工程師抓包機器人，怎麼辦？",
+        "type": "choice",
+        "prompt": "工程師把發文時間和 IP 截圖公開了。你怎麼辦？",
+        "options": [
+          {
+            "text": "改機器人設定：隔幾秒再發，換動漫和寵物頭貼！",
+            "fans": 6200,
+            "cred": -12,
+            "insight": "假裝像真人發文，讓人更難抓出來。",
+            "comments": [
+              {
+                "user": "官方資安",
+                "role": "官方資安",
+                "text": "系統發現異常流量，正在鎖定假帳號！"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "頭貼換了，還是很像機器人耶。"
+              }
+            ]
+          },
+          {
+            "text": "叫機器人灌爆工程師的帳號，讓他癱瘓！",
+            "fans": 7500,
+            "cred": -22,
+            "insight": "用人海戰術讓揭發的人沒辦法說話，很危險。",
+            "comments": [
+              {
+                "user": "官方資安",
+                "role": "官方資安",
+                "text": "正在鎖定惡意假帳號的來源！"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "這樣欺負人，太過分了！"
+              }
+            ]
+          }
+        ],
+        "comments": [
+          {
+            "user": "數位發展小組",
+            "role": "官方資安",
+            "text": "平台系統已偵測到異常流量攻擊，正鎖定惡意殭屍"
+          }
+        ]
+      },
+      {
+        "stepIndex": 3,
+        "title": "第 3 步：平台開始封假帳號，怎麼辦？",
+        "type": "choice",
+        "prompt": "平台把你的假帳號一批一批封掉，粉絲一直掉。你怎麼辦？",
+        "options": [
+          {
+            "text": "發文：大平台在消滅平民聲音！快追蹤備用小號！",
+            "fans": 5200,
+            "cred": -10,
+            "insight": "被抓就開備用帳號，把粉絲帶走。",
+            "comments": [
+              {
+                "user": "清醒網友",
+                "role": "網友",
+                "text": "這帳號以前都在曬貓，突然變陰謀論，是被賣掉了吧？"
+              },
+              {
+                "user": "粉絲",
+                "role": "粉絲",
+                "text": "備用小號在哪裡？快追！"
+              }
+            ]
+          },
+          {
+            "text": "花錢買更像真人的老帳號，假裝是一般人。",
+            "fans": 5800,
+            "cred": -14,
+            "insight": "買別人用過的帳號，假裝是真人，很難防。",
+            "comments": [
+              {
+                "user": "網友",
+                "role": "網友",
+                "text": "這帳號以前是曬貓，現在怎麼變這樣？"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "買帳號來騙人，不可以吧？"
+              }
+            ]
+          }
+        ],
+        "comments": [
+          {
+            "user": "清醒網友",
+            "role": "網友",
+            "text": "這帳號三年前都在曬貓，突然今天開始發滿滿的陰"
+          }
+        ]
+      },
+      {
+        "stepIndex": 4,
+        "title": "第 4 步：網友發現你以前的發文不一樣，怎麼辦？",
+        "type": "choice",
+        "prompt": "網友翻出你五年前的發文，發現根本是換皮粉專。你怎麼辦？",
+        "options": [
+          {
+            "text": "連夜刪掉以前的發文，假裝從第一天就是正義粉專！",
+            "fans": 3500,
+            "cred": -9,
+            "insight": "刪歷史也沒用，網路上常常留有備份。",
+            "comments": [
+              {
+                "user": "防護聯盟",
+                "role": "全民組織",
+                "text": "已經存證並通報了，請大家不要再傳！"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "刪掉也不能當作沒發生過。"
+              }
+            ]
+          },
+          {
+            "text": "硬說：以前被盜帳號，現在才拿回來發聲！",
+            "fans": 4000,
+            "cred": -12,
+            "insight": "被抓包就說被盜帳號，這是常用的藉口。",
+            "comments": [
+              {
+                "user": "聯盟",
+                "role": "全民組織",
+                "text": "已經存證通報了，請停止擴散！"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "每次都說被盜，誰相信啊？"
+              }
+            ]
+          }
+        ],
+        "comments": [
+          {
+            "user": "全台事實防護聯盟",
+            "role": "全民組織",
+            "text": "全案已完成數位存證並通報檢警與消保機構，請民"
+          }
+        ]
+      },
+      {
+        "stepIndex": 5,
+        "title": "第 5 步：最後衝刺，衝破十萬粉絲！",
+        "type": "choice",
+        "prompt": "只差最後一步就十萬粉絲了，平台審查員快來了。你要出王牌嗎？",
+        "options": [
+          {
+            "text": "全網推播：十萬人都在看，再不看就被刪了！",
+            "fans": 8500,
+            "cred": -10,
+            "insight": "說再不看就被刪，逼猶豫的人趕快點。",
+            "comments": [
+              {
+                "user": "管理員",
+                "role": "平台審查",
+                "text": "這個帳號被很多人檢舉，正在審查！"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "再不看就被刪，聽起來就是騙點閱。"
+              }
+            ]
+          },
+          {
+            "text": "宣布：全台小學生免費虛寶大狂歡！",
+            "fans": 7800,
+            "cred": -8,
+            "insight": "回到一開始的招數，用免費禮物吸引人。",
+            "comments": [
+              {
+                "user": "管理員",
+                "role": "平台審查",
+                "text": "已被很多人檢舉，正在審查！"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "又是免費虛寶，我先問老師。"
+              }
+            ]
+          }
+        ],
+        "comments": [
+          {
+            "user": "社群管理員",
+            "role": "平台審查",
+            "text": "系統警報：該帳號已被超過 5000 位用戶檢"
+          }
+        ]
+      },
+      {
+        "stepIndex": 6,
+        "title": "第 6 步：想一想，怎麼面對滿滿的機器人？",
+        "type": "reflection",
+        "prompt": "經過六關，你覺得看網路消息最重要的一雙眼睛是什麼？",
+        "options": [
+          {
+            "text": "不只看讚數和留言，找有名字、有查證過程的來源，看到聳動消息先停下來查！",
+            "fans": 3000,
+            "cred": 15,
+            "insight": "恭喜通關！你已經完成六大心理疫苗訓練了！",
+            "comments": [
+              {
+                "user": "老師",
+                "role": "老師",
+                "text": "太棒了！你已經是反假小勇士了！"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "我以後會先查再相信。"
+              }
+            ]
+          },
+          {
+            "text": "按讚破萬、留言很多，就一定是大家支持的真話！",
+            "fans": -1000,
+            "cred": -15,
+            "insight": "小心！你剛剛才用機器人刷了很多留言，讚數可以買。",
+            "comments": [
+              {
+                "user": "老師",
+                "role": "老師",
+                "text": "讚數可以買，不等於真相喔。"
+              },
+              {
+                "user": "同學",
+                "role": "同學",
+                "text": "我差點又被讚數騙了。"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+];
 
     /* ==========================================================================
        4. 遊戲狀態機 (Game State)
@@ -1442,7 +2459,7 @@
       dom.personaOptionsGrid.innerHTML = '';
       dom.btnConfirmPersona.disabled = true;
       dom.btnConfirmPersona.className = "w-full bg-slate-800 text-slate-500 font-bold py-2.5 rounded-xl text-xs transition cursor-not-allowed flex items-center justify-center gap-2";
-      dom.btnConfirmPersona.textContent = "請先點選一個發文身分";
+      dom.btnConfirmPersona.textContent = "請先選一個身分";
 
       PERSONAS_CONFIG.forEach(p => {
         const card = document.createElement('div');
@@ -1500,7 +2517,7 @@
         </div>
         <div class="bg-slate-900 border border-slate-800 rounded-2xl rounded-tl-none p-2.5 max-w-[88%] text-xs shadow-md">
           <div class="font-bold text-amber-400 text-[10px] mb-0.5 flex items-center justify-between">
-            <span>網軍導師 (Troll Boss)</span>
+            <span>網軍老師</span>
             <span class="text-slate-400 font-mono text-[9px]">MISSION ${currentStage.id}</span>
           </div>
           <div class="text-slate-200 leading-relaxed">${currentStage.initialPrompt}</div>
@@ -1555,7 +2572,7 @@
       dom.optionsBox.innerHTML = `
         <div class="text-center py-2 text-xs text-slate-400 flex items-center justify-center gap-2">
           <i class="fa-solid fa-circle-notch fa-spin text-amber-400"></i>
-          <span>演算法推播中... 社群網友反應中...</span>
+          <span>正在推播...網友要留言了...</span>
         </div>
       `;
 
@@ -1602,7 +2619,7 @@
         actionCard.className = "bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 animate-slide";
         actionCard.innerHTML = `
           <div class="text-[10px] text-slate-400 mb-0.5 flex items-center justify-between">
-            <span>操盤手動作：</span>
+            <span>你做了：</span>
             <span class="${actualCred >= 0 ? 'text-emerald-400' : 'text-rose-400'} font-bold">
               粉絲 ${actualFans >= 0 ? '+' : ''}${actualFans} | 信用 ${actualCred >= 0 ? '+' : ''}${actualCred}%
             </span>
@@ -1612,17 +2629,18 @@
         dom.dialogFlow.appendChild(actionCard);
       }
 
-      // 產生社群留言反饋（若該步驟有留言串）
-      if (stepData.comments && stepData.comments.length > 0) {
+      // 留言跟著你的選擇走：先用該選項自己的留言，沒有才用該步驟的舊留言
+      const commentsToShow = (opt.comments && opt.comments.length > 0) ? opt.comments : (stepData.comments || []);
+      if (commentsToShow.length > 0) {
         const commentsCard = document.createElement('div');
         commentsCard.className = "bg-slate-950/90 border border-slate-800 rounded-2xl p-2.5 space-y-2 animate-slide";
         let cHtml = `
           <div class="text-[10px] font-bold text-slate-400 flex items-center justify-between border-b border-slate-800 pb-1">
-            <span><i class="fa-solid fa-comments text-amber-400"></i> 即時社群留言動態</span>
+            <span><i class="fa-solid fa-comments text-amber-400"></i> 網友留言</span>
             <span class="text-[9px] text-slate-500">最新互動</span>
           </div>
         `;
-        stepData.comments.forEach(c => {
+        commentsToShow.forEach(c => {
           cHtml += `
             <div class="flex items-start gap-2 text-xs">
               <div class="w-6 h-6 rounded-full bg-slate-800 text-slate-300 flex items-center justify-center text-[10px] shrink-0 mt-0.5">
@@ -1647,7 +2665,7 @@
       insightCard.className = "bg-amber-950/20 border-l-2 border-amber-400 p-2.5 rounded-r-xl text-xs text-amber-200 animate-slide";
       insightCard.innerHTML = `
         <div class="font-bold text-amber-300 text-[10px] flex items-center gap-1 mb-0.5">
-          <i class="fa-solid fa-brain"></i> 【思辨導師筆記】操盤心理拆解
+          <i class="fa-solid fa-brain"></i> 【小老師筆記】為什麼會這樣？
         </div>
         <div class="leading-relaxed text-[11px]">${opt.insight}</div>
       `;
@@ -1687,7 +2705,7 @@
 
       dom.modalBadgeIcon.innerHTML = `<i class="fa-solid ${stage.badgeIcon} ${stage.badgeColor}"></i>`;
       dom.modalBadgeTitle.textContent = `解鎖徽章：${stage.badgeName.split(' ')[0]}`;
-      dom.modalBadgeDesc.textContent = `太厲害了！你已親身經歷過「${stage.badgeName}」從發文、被質疑、到水軍洗版的完整多輪攻防！你已建立該項心理抗體！`;
+      dom.modalBadgeDesc.textContent = `太厲害了！你玩過「${stage.badgeName}」這一關，學會這個防騙本領了！`;
       dom.badgeModal.classList.remove('hidden');
 
       dom.btnModalOk.onclick = () => {
@@ -1719,16 +2737,16 @@
         dom.resultTag.textContent = "全數 6 大心理疫苗解鎖成功";
         dom.resultIconWrapper.className = "w-14 h-14 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto text-2xl pulse-glow";
         dom.resultIconWrapper.innerHTML = '<i class="fa-solid fa-shield-cat"></i>';
-        dom.resultTitle.textContent = state.followers >= 100000 ? "狂賀！晉升十萬粉絲網軍操盤大亨！" : "恭喜修煉圓滿！你已擁有最強防禦抗體！";
-        dom.resultSubtitle.textContent = `你成功操盤出 ${state.followers.toLocaleString()} 名追蹤者！親手做過這 6 大骯髒套路，現實生活裡的假訊息再也騙不到你了！`;
+        dom.resultTitle.textContent = state.followers >= 100000 ? "哇！你衝到十萬粉絲了！" : "恭喜過關！你已經會防假消息了！";
+        dom.resultSubtitle.textContent = `你玩過了 6 大騙人套路，以後假消息很難騙到你了！你有 ${state.followers.toLocaleString()} 名追蹤者！`;
       } else {
         sound.playWarning();
         dom.resultTag.className = "bg-rose-500/20 text-rose-300 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider";
         dom.resultTag.textContent = "可信度歸零・帳號被檢舉封禁";
         dom.resultIconWrapper.className = "w-14 h-14 rounded-2xl bg-rose-500/20 text-rose-400 flex items-center justify-center mx-auto text-2xl";
         dom.resultIconWrapper.innerHTML = '<i class="fa-solid fa-ban"></i>';
-        dom.resultTitle.textContent = "手段太過火！帳號遭全網強制下架！";
-        dom.resultSubtitle.textContent = "這也是最寶貴的一課：一味造謠與霸凌，終究會被整個社會機制與查核系統徹底淘汰。";
+        dom.resultTitle.textContent = "太過火了！帳號被關掉了！";
+        dom.resultSubtitle.textContent = "這也是重要的一課：一直編假消息、欺負人，最後會被大家封掉。";
       }
 
       // 渲染 6 大徽章成就清單
@@ -1751,7 +2769,7 @@
               </span>
             </div>
             <p class="text-slate-400 text-[10px] mt-0.5 leading-snug">
-              ${isEarned ? `已在實戰中經歷身分包裝、公關回擊與思辨，深諳背後套路。` : '尚未完成該關卡多輪攻防'}
+              ${isEarned ? `已經在遊戲裡玩過，知道這個套路了。` : '還沒玩完這一關'}
             </p>
           </div>
         `;
@@ -1766,10 +2784,10 @@
       if (val) { state.playerName = val; }
       dom.certText.innerHTML = `
         <span class="text-amber-300 font-bold">🎖️【認證反假小英雄：${state.playerName}】</span><br>
-        「我親自體驗過 6 大網軍造假套路，經歷多輪留言攻防，看穿了身分假冒、情緒炸彈、二元對立與機器人洗版。
-        在真實世界的網路裡，我承諾：<strong class="text-white">停看聽、多查證，絕不當假訊息的幫凶！</strong>」
+        「我玩過 6 大騙人套路，知道假冒、煽動、吵架和機器人洗版是怎麼騙人的。
+        在真的網路上，我會先停一下、查一下，絕不亂轉傳！」
       `;
-      showToast(`已簽發證書給「${state.playerName}」！`);
+      showToast(`證書發給「${state.playerName}」！`);
     };
 
     // 複製戰績卡
@@ -1778,8 +2796,8 @@
       const textToCopy = `🎮 我在台灣兒童版《Bad News 小小網軍修煉所》破關了！\n` +
                          `📈 最終影響力粉絲：${state.followers.toLocaleString()} 人（突破十萬大關！）\n` +
                          `🛡️ 帳號剩餘可信度：${Math.max(0, state.credibility)}%\n` +
-                         `🏅 已完成 6 大關卡、每關 6 輪深度攻防，看穿網路假訊息套路！\n` +
-                         `換你來試試看，你能操盤超過 10 萬粉絲嗎？`;
+                         `🏅 我玩完了 6 關，學會看穿假消息！\n` +
+                         `換你來玩玩看，你能到 10 萬粉絲嗎？`;
 
       const tempInput = document.createElement('textarea');
       tempInput.value = textToCopy;
@@ -1787,9 +2805,9 @@
       tempInput.select();
       try {
         document.execCommand('copy');
-        showToast("戰績卡已複製到剪貼簿！可貼到 LINE 分享！");
+        showToast("戰績卡複製好了！可以貼到 LINE！");
       } catch (err) {
-        showToast("複製失敗，請直接截圖分享！", false);
+        showToast("複製失敗，請截圖分享！", false);
       }
       document.body.removeChild(tempInput);
     };
